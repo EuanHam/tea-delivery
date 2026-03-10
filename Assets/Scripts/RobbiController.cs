@@ -44,7 +44,7 @@ public class RobbiController : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = sphere.transform.position - new Vector3(0, 0.2f, 0f);
+        transform.position = sphere.transform.position - new Vector3(0, 0.1f, 0f);
     }
 
 
