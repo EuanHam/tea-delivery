@@ -1,0 +1,66 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class RobbiController : MonoBehaviour
+{
+    public bool isDrifting;
+    public Rigidbody rb, sphere;
+
+    public Transform frontWheels, rearWheel;
+    public float acceleration;
+    public float reverseAcceleration;
+
+    public float currentSpeed, speed;
+    public float currentRotate, rotate;
+
+    public float turnSpeed;
+
+    public float topSpeed;
+
+    public float reverseSpeed;
+
+    public float drag;
+
+    public float gravity;
+
+
+
+    private float Drag = 0.95f;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        sphere.interpolation = RigidbodyInterpolation.Interpolate;
+    }
+    void Update()
+    {
+        speed = 0f;
+        rotate = 0f;
+        
+        if (Keyboard.current.wKey.isPressed) speed = 1f;
+        if (Keyboard.current.sKey.isPressed) speed = -1f;
+        if (Keyboard.current.aKey.isPressed) rotate = -1f;
+        if (Keyboard.current.dKey.isPressed) rotate = 1f;
+    }
+
+    void LateUpdate()
+    {
+        transform.position = sphere.transform.position - new Vector3(0, 0.2f, 0f);
+    }
+
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (speed > 0f && sphere.linearVelocity.magnitude < topSpeed)
+            sphere.AddForce(transform.forward * speed * acceleration, ForceMode.Acceleration);
+
+        else if (speed < 0f && sphere.linearVelocity.magnitude < reverseSpeed)
+            sphere.AddForce(transform.forward * speed * reverseAcceleration, ForceMode.Acceleration);
+
+        sphere.AddForce(Vector3.down * gravity , ForceMode.Acceleration);
+
+        Quaternion rotation = Quaternion.Euler(0f, rotate * turnSpeed * Time.fixedDeltaTime, 0f);
+        transform.rotation *= rotation;
+
+    }
+}
