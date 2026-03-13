@@ -23,8 +23,12 @@ public class InstructionManager : MonoBehaviour
     
     void Start()
     {
-        ShowInstruction(currentInstructionIndex);
-        
+        if (instructionPanel != null)
+        {
+            instructionPanel.SetActive(true); // Show at start
+            ShowInstruction(currentInstructionIndex);
+        }
+
         if (congratsPanel != null)
             congratsPanel.SetActive(false);
     }

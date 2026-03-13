@@ -746,7 +746,6 @@ GameObject:
   - component: {fileID: 557904749}
   - component: {fileID: 557904751}
   - component: {fileID: 557904750}
-  - component: {fileID: 557904752}
   m_Layer: 5
   m_Name: InstructionText
   m_TagString: Untagged
@@ -761,12 +760,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557904748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1878906832}
+  m_Father: {fileID: 1604491754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -873,27 +872,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557904748}
   m_CullTransparentMesh: 1
---- !u!114 &557904752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557904748}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22afe3a209404472899fdc29dd7bab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instructionPanel: {fileID: 0}
-  instructionText: {fileID: 0}
-  congratsPanel: {fileID: 0}
-  instructions:
-  - Welcome to the world Robbi!
-  - Your life's ambition is delivering drinks!
-  - You currently have Jasmine Milk tea with boba!
-  - Let's find the target to delivery the boba!
-  - Use WASD to navigate!
 --- !u!1001 &963584818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1039,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1373903576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1352,6 +1330,42 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 166636657}
   m_SourcePrefab: {fileID: 100100000, guid: edf2c267f8d72411e97c54c58819f8cd, type: 3}
+--- !u!1 &1604491753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604491754}
+  m_Layer: 5
+  m_Name: Instruction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1604491754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604491753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 557904749}
+  m_Father: {fileID: 1878906832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1735016913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1758,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 557904749}
+  - {fileID: 1604491754}
   - {fileID: 1373903576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1765,9 +1779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22afe3a209404472899fdc29dd7bab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionPanel: {fileID: 1878906828}
+  instructionPanel: {fileID: 1604491753}
   instructionText: {fileID: 557904750}
-  congratsPanel: {fileID: 1934213110}
+  congratsPanel: {fileID: 1373903575}
   instructions:
   - Welcome to the world Robbi! (Press space)
   - Your life's ambition is delivering drinks!
