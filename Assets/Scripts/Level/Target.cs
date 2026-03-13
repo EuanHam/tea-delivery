@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour
 {
@@ -6,12 +7,11 @@ public class Target : MonoBehaviour
     
     void Start()
     {
-        // Find the InstructionManager in the scene
         instructionManager = FindObjectOfType<InstructionManager>();
         
         if (instructionManager == null)
         {
-            Debug.LogError("InstructionManager not found in the scene!");
+            Debug.LogError("InstructionManager not found in scene");
         }
     }
     
@@ -19,33 +19,26 @@ public class Target : MonoBehaviour
     {
         Debug.Log($"Something entered: {other.gameObject.name}, Tag: {other.tag}");
         
-        // Check if the colliding object OR its parent has the "Vehicle" tag
+        // check if collision or parent has tag
         if (other.CompareTag("Vehicle") || 
             (other.transform.parent != null && other.transform.parent.CompareTag("Vehicle")))
         {
-            Debug.Log("VEHICLE DETECTED! Showing congratulations...");
+            Debug.Log("vehicle detected! Showing congratulations...");
             if (instructionManager != null)
             {
                 instructionManager.ShowCongratulations();
+                StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
             }
             else
             {
-                Debug.LogError("InstructionManager is NULL!");
+                Debug.LogError("InstructionManager is null");
             }
         }
     }
     
-    // If you're using 2D colliders, use this instead:
-    /*
-    void OnTriggerEnter2D(Collider2D other)
+    private System.Collections.IEnumerator ReturnToLevelSelectionAfterDelay(float delaySeconds)
     {
-        if (other.CompareTag("Vehicle") || other.CompareTag("Player"))
-        {
-            if (instructionManager != null)
-            {
-                instructionManager.ShowCongratulations();
-            }
-        }
+        yield return new WaitForSeconds(delaySeconds);
+        SceneManager.LoadScene("LevelSelection");
     }
-    */
 }
