@@ -4,18 +4,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class npcAI : MonoBehaviour
 {
-
     public Animator anim;
     public NavMeshAgent nma;
 
     public GameObject[] waypoints;
 
-    private int currWaypoint;
+    public int currWaypoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currWaypoint = -1;
+        currWaypoint = Random.Range(0, waypoints.Length);
         nma = GetComponent<NavMeshAgent>();
     }
 
@@ -23,7 +22,7 @@ public class npcAI : MonoBehaviour
     void Update()
     {
         anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
-        if (nma.remainingDistance < 0.1f && !nma.pathPending) setNextWaypoint();
+        if (waypoints.Length != 0 && nma.remainingDistance < 1f && !nma.pathPending) setNextWaypoint();
     }
 
     private void setNextWaypoint() 
