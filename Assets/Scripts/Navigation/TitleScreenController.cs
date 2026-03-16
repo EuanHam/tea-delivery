@@ -9,6 +9,7 @@ public class TitleScreenController : MonoBehaviour
     
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource backgroundMusicSource;
     
     void Start()
     {
@@ -19,6 +20,12 @@ public class TitleScreenController : MonoBehaviour
         else
         {
             Debug.LogError("Play button not configured in TitleScreenController");
+        }
+        
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.loop = true;
+            backgroundMusicSource.Play();
         }
     }
     

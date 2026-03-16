@@ -10,6 +10,7 @@ public class LevelSelectionController : MonoBehaviour
     
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource backgroundMusicSource;
     
     void Start()
     {
@@ -20,6 +21,12 @@ public class LevelSelectionController : MonoBehaviour
         else
         {
             Debug.LogError("Configure back button on LevelSelectionController");
+        }
+        
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.loop = true;
+            backgroundMusicSource.Play();
         }
         
         if (levelButtons != null && levelButtons.Length >= 4)
