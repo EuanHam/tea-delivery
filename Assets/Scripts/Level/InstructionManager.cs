@@ -55,10 +55,10 @@ public class InstructionManager : MonoBehaviour
             case "Level1":
                 return new string[]
                 {
-                    "Congrats on passing training! (Space space)",
+                    "Congrats on passing training! (Press space)",
                     "The icecream truck owner wants matcha now!",
                     "Some roads are barricaded now so find the right path!",
-                    "Pst pst hint: find the green space!",
+                    "Psst psst hint: find the green space!",
                     "Good luck!"
                 };
             
