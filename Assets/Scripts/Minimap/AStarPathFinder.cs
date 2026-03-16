@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Algo implemented with help from : https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2
+
 public static class AStarPathfinder
 {
     public static List<IntersectionNode> FindPath(IntersectionNode startNode, IntersectionNode goalNode)

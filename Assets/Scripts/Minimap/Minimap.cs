@@ -6,6 +6,7 @@ public class Minimap : MonoBehaviour
 
     void LateUpdate()
     {
+        // Have camera follow the player around
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;

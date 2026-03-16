@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class MinimapRouteDrawer : MonoBehaviour
+public class Level1MinimapRouteDrawer : MonoBehaviour
 {
     public Transform robot;
     public Transform destination;
     public IntersectionNode[] allNodes;
 
-    public float heightOffset = 100f;
+    public float heightOffset = 98f;
     public float recomputeInterval = 0.3f;
-    public float lineWidth = 12f;
+    public float lineWidth = 5f;
     public float nodeReachDistance = 15f;
 
     private IntersectionNode lastPassedNode;
@@ -24,11 +24,9 @@ public class MinimapRouteDrawer : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         lr.useWorldSpace = true;
 
+        // Set minimap nav line width
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
-
-        // Constant width along whole line
-        lr.widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 1f);
     }
 
     void Update()
@@ -37,6 +35,7 @@ public class MinimapRouteDrawer : MonoBehaviour
 
         timer += Time.deltaTime;
 
+        // Interval for recomputing path
         if (timer >= recomputeInterval)
         {
             timer = 0f;
@@ -49,15 +48,18 @@ public class MinimapRouteDrawer : MonoBehaviour
     void UpdatePassedNode()
     {
         if (robot == null || currentPath == null || currentPath.Count == 0)
+        {
             return;
+        }
 
-        Vector3 robotFlat = robot.position;
-        robotFlat.y = 0f;
+        // Normalize y values to compute distance between two
+        Vector3 robotYNorm = robot.position;
+        robotYNorm.y = 0f;
 
-        Vector3 firstNodeFlat = currentPath[0].transform.position;
-        firstNodeFlat.y = 0f;
+        Vector3 firstNodeYNorm = currentPath[0].transform.position;
+        firstNodeYNorm.y = 0f;
 
-        float dist = Vector3.Distance(robotFlat, firstNodeFlat);
+        float dist = Vector3.Distance(robotYNorm, firstNodeYNorm);
 
         if (dist <= nodeReachDistance)
         {
@@ -70,22 +72,21 @@ public class MinimapRouteDrawer : MonoBehaviour
     {
         if (robot == null || destination == null || allNodes == null || allNodes.Length == 0)
         {
-            Debug.Log("Missing robot, destination, or allNodes");
+            Debug.Log("Missing robot, destination, or nodes");
             return;
         }
 
         IntersectionNode startNode = FindNearestNode(robot.position);
         IntersectionNode goalNode = FindNearestNode(destination.position);
 
+        // Call A star path finding algo
         List<IntersectionNode> newPath = AStarPathfinder.FindPath(startNode, goalNode);
 
         if (newPath == null || newPath.Count == 0)
         {
-            Debug.Log("A* returned null or empty path");
+            Debug.Log("A star returned null or empty path");
             return;
         }
-
-        Debug.Log("Path found with " + newPath.Count + " nodes");
 
         currentPath = newPath;
     }
@@ -110,6 +111,7 @@ public class MinimapRouteDrawer : MonoBehaviour
         for (int i = 0; i < currentPath.Count; i++)
         {
             Vector3 p = currentPath[i].transform.position;
+            // Draw line at certain height for the minimap camera
             p.y = heightOffset;
             lr.SetPosition(i + 1, p);
         }
@@ -124,8 +126,11 @@ public class MinimapRouteDrawer : MonoBehaviour
         {
             if (node == null) continue;
 
-            if (robot.position.z > node.transform.position.z && Mathf.Abs(robot.position.x - node.transform.position.x) < 10f)
+            // If we have moved past a node, don't include it in the path finding
+            if (robot.position.z > node.transform.position.z && robot.position.x > node.transform.position.x)
+            {
                 continue;
+            }
 
             float dist = Vector3.Distance(position, node.transform.position);
             if (dist < bestDist)

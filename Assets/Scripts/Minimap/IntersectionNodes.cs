@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class IntersectionNode : MonoBehaviour
 {
+    // Store each nodes neighbors
     public List<IntersectionNode> neighbors = new List<IntersectionNode>();
 
+    // Draw visualization of the node graph
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;

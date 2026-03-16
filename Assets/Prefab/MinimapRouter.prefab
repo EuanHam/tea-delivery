@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2159725159443517298}
   - component: {fileID: 742455140847319527}
-  - component: {fileID: 678721209774469720}
+  - component: {fileID: 1677802778477461805}
   m_Layer: 7
   m_Name: MinimapRouter
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3924952077932464672}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,7 +143,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &678721209774469720
+--- !u!114 &1677802778477461805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3924952077932464672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd40e0517fb9e485ca1094ada7d7d5ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b6369c9f85d544f091278d1ca562b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   robot: {fileID: 0}
@@ -162,8 +162,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   heightOffset: 98
-  recomputeInterval: 0.1
+  recomputeInterval: 0.3
   lineWidth: 5
   nodeReachDistance: 15
