@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       propertyPath: m_Name
-      value: npc 1
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       propertyPath: m_Controller
@@ -1189,6 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 3485479257594915492}
   rootCollider: {fileID: 4266258690284773425}
+  wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
 --- !u!136 &4266258690284773425
 CapsuleCollider:
   m_ObjectHideFlags: 0

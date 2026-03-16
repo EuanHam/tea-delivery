@@ -11,6 +11,9 @@ public class InstructionManager : MonoBehaviour
     public TextMeshProUGUI instructionText;
     public GameObject congratsPanel;
     
+    [Header("Audio")]
+    [SerializeField] private AudioSource backgroundMusicSource;
+    
     private string[] instructions;
     private int currentInstructionIndex = 0;
     
@@ -26,6 +29,12 @@ public class InstructionManager : MonoBehaviour
 
         if (congratsPanel != null)
             congratsPanel.SetActive(false);
+        
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.loop = true;
+            backgroundMusicSource.Play();
+        }
     }
     
     void Update()

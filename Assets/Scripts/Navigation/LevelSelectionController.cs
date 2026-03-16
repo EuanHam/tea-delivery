@@ -10,6 +10,7 @@ public class LevelSelectionController : MonoBehaviour
     
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource backgroundMusicSource;
     
     void Start()
     {
@@ -20,6 +21,12 @@ public class LevelSelectionController : MonoBehaviour
         else
         {
             Debug.LogError("Configure back button on LevelSelectionController");
+        }
+        
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.loop = true;
+            backgroundMusicSource.Play();
         }
         
         if (levelButtons != null && levelButtons.Length >= 4)
@@ -40,13 +47,13 @@ public class LevelSelectionController : MonoBehaviour
     void PlaySoundAndGoToTitleScreen()
     {
         PlaySound();
-        GoToTitleScreen();
+        StartCoroutine(GoToTitleScreenWithDelay(0.5f));
     }
     
     void PlaySoundThenLoadLevel(string levelName)
     {
         PlaySound();
-        LoadLevel(levelName);
+        StartCoroutine(LoadLevelWithDelay(levelName, 0.5f));
     }
     
     void PlaySound()
@@ -59,6 +66,18 @@ public class LevelSelectionController : MonoBehaviour
         {
             Debug.LogError("AudioSource not assigned!");
         }
+    }
+    
+    System.Collections.IEnumerator GoToTitleScreenWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("TitleScreen");
+    }
+    
+    System.Collections.IEnumerator LoadLevelWithDelay(string levelName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(levelName);
     }
     
     void GoToTitleScreen()
