@@ -35,17 +35,8 @@ public class NPCController : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(pos, out hit, 1000f, NavMesh.AllAreas))
             {
-                npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity);
+                npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity, transform);
 
-                foreach (Transform child in npcs[i].transform)
-                {
-                    Renderer rend = child.GetComponent<Renderer>();
-
-                    if (rend != null)
-                    {
-                        //rend.material = mater;
-                    }
-                }
 
                 npcAI nAI = npcs[i].GetComponent<npcAI>();
 
@@ -73,6 +64,24 @@ public class NPCController : MonoBehaviour
                         moods[i] = mood.NORMAL;
                         break;
                 }
+
+
+                foreach (Transform child in npcs[i].transform)
+                {
+                    Renderer rend = child.GetComponent<Renderer>();
+                    if (rend != null)
+                    {
+                        if (moods[i] == mood.RUSHED) {
+                            rend.material = mat[0];
+                        } else if (moods[i] == mood.NORMAL) {
+                            rend.material = mat[1];
+                        } else {
+                            rend.material = mat[2];
+                        }
+                        
+                    }
+                }
+
             }
             else
             {

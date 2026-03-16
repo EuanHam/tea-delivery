@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3485479257594915492}
+  nma: {fileID: 5688209990914103016}
   rootCollider: {fileID: 4266258690284773425}
   wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
 --- !u!136 &4266258690284773425
