@@ -3,37 +3,57 @@ using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour
 {
+    BobaDeliveryManager bobaDeliveryManager = BobaDeliveryManager.Instance;
+
     private InstructionManager instructionManager;
     
     void Start()
     {
         instructionManager = FindObjectOfType<InstructionManager>();
-        
+        bobaDeliveryManager = BobaDeliveryManager.Instance;
+
         if (instructionManager == null)
         {
             Debug.LogError("InstructionManager not found in scene");
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"Something entered: {other.gameObject.name}, Tag: {other.tag}");
+        Debug.Log($"Something entered: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
         
         // check if collision or parent has tag
-        if (other.CompareTag("Vehicle") || 
-            (other.transform.parent != null && other.transform.parent.CompareTag("Vehicle")))
-        {
-            Debug.Log("vehicle detected! Showing congratulations...");
-            if (instructionManager != null)
+        if (collision.gameObject.CompareTag("Player")) { 
+            if (bobaDeliveryManager.hasBoba == false)
             {
-                instructionManager.ShowCongratulations();
-                StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
+                bobaDeliveryManager.UpdateHUD("You don't have a boba to deliver!");
+                return;
             }
-            else
+            if (bobaDeliveryManager.currentOrder != null)
             {
-                Debug.LogError("InstructionManager is null");
+                Transform deliveryLocation = bobaDeliveryManager.currentOrder.deliveryLocation;
+                if (Vector3.Distance(transform.position, deliveryLocation.position) > 5f)
+                {
+                    bobaDeliveryManager.UpdateHUD("This isn't the right house!");
+                    // return;
+                } else
+                {
+                    bobaDeliveryManager.DeliverBoba();
+                    // return;
+                }
+
+                if (instructionManager != null)
+                {
+                    instructionManager.ShowCongratulations();
+                    StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
+                }
+                else
+                {
+                    Debug.LogError("InstructionManager is null");
+                }
             }
         }
+
     }
     
     private System.Collections.IEnumerator ReturnToLevelSelectionAfterDelay(float delaySeconds)
