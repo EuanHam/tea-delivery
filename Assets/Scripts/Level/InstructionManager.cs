@@ -45,17 +45,17 @@ public class InstructionManager : MonoBehaviour
             case "Level0Tutorial":
                 return new string[]
                 {
-                    "Welcome to the world Robbi! (Press space)",
+                    "Welcome to the world, Robbi!\n(Press space)",
                     "Your life's ambition is delivering drinks!",
                     "You currently have Jasmine Milk tea with boba!",
-                    "Let's find the target to delivery the boba!",
+                    "Let's find the target to deliver the boba!",
                     "Use WASD to navigate!"
                 };
             
             case "Level1":
                 return new string[]
                 {
-                    "Congrats on passing training! (Press space)",
+                    "Congrats on passing training!\n(Press space)",
                     "The icecream truck owner wants matcha now!",
                     "Some roads are barricaded now so find the right path!",
                     "Psst psst hint: find the green space!",
