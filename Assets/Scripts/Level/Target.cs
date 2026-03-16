@@ -39,17 +39,16 @@ public class Target : MonoBehaviour
                 } else
                 {
                     bobaDeliveryManager.DeliverBoba();
+                    if (instructionManager != null)
+                    {
+                        instructionManager.ShowCongratulations();
+                        StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
+                    }
+                    else
+                    {
+                        Debug.LogError("InstructionManager is null");
+                    }
                     // return;
-                }
-
-                if (instructionManager != null)
-                {
-                    instructionManager.ShowCongratulations();
-                    StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
-                }
-                else
-                {
-                    Debug.LogError("InstructionManager is null");
                 }
             }
         }
