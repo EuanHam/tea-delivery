@@ -8,6 +8,9 @@ public class CollisionControl : MonoBehaviour
     public Collider rootCollider;
     private float timer = 0;
     private bool start;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip wilhelmScream;
 
     void Awake()
     {
@@ -19,6 +22,7 @@ public class CollisionControl : MonoBehaviour
     {
         if (c.gameObject.tag == "Player") 
         {
+            PlayWilhelmScream();
             EnableRagdoll(c);
             Destroy(gameObject, Random.Range(5f, 10f));
         }
@@ -42,6 +46,14 @@ public class CollisionControl : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.AddForce(-c.impulse.normalized * 300.0f, ForceMode.Impulse);
+        }
+    }
+    
+    private void PlayWilhelmScream()
+    {
+        if (wilhelmScream != null)
+        {
+            AudioSource.PlayClipAtPoint(wilhelmScream, transform.position);
         }
     }
 }
