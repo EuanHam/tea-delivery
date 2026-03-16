@@ -5,6 +5,7 @@ public class CollisionControl : MonoBehaviour
 
     private Rigidbody[] rbs;
     public Animator anim;
+    public UnityEngine.AI.NavMeshAgent nma;
     public Collider rootCollider;
     private float timer = 0;
     private bool start;
@@ -37,6 +38,10 @@ public class CollisionControl : MonoBehaviour
     private void EnableRagdoll(Collision c)
     {
         rootCollider.enabled = false;
+
+        nma.isStopped = true;
+        nma.enabled = false;
+        
         anim.enabled = false;
         foreach (Rigidbody rb in rbs)
         {

@@ -35,7 +35,7 @@ public class NPCController : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(pos, out hit, 1000f, NavMesh.AllAreas))
             {
-                npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity);
+                npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity, transform);
 
                 foreach (Transform child in npcs[i].transform)
                 {
