@@ -20,10 +20,10 @@ public class Target : MonoBehaviour
         Debug.Log($"Something entered: {other.gameObject.name}, Tag: {other.tag}");
         
         // check if collision or parent has tag
-        if (other.CompareTag("Vehicle") || 
-            (other.transform.parent != null && other.transform.parent.CompareTag("Vehicle")))
+        if (other.CompareTag("Player") || 
+            (other.transform.parent != null && other.transform.parent.CompareTag("Player")))
         {
-            Debug.Log("vehicle detected! Showing congratulations...");
+            Debug.Log("Player detected! Showing congratulations...");
             if (instructionManager != null)
             {
                 instructionManager.ShowCongratulations();
