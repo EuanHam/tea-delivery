@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class NPCController : MonoBehaviour
 {
-    public GameObject prefab, spawningZone;
+    public GameObject prefab, center;
     public int size;
     public GameObject[] poi;
     private GameObject[] npcs;
@@ -26,17 +26,15 @@ public class NPCController : MonoBehaviour
         anims = new Animator[size];
         nmas = new NavMeshAgent[size];
         moods = new mood[size];
-        
+
         for (int i = 0; i < size; i++)
         {
-            Vector3 randomPos = spawningZone.transform.position +
-                                new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
-
-            NavMeshHit navHit;
-            if (NavMesh.SamplePosition(randomPos, out navHit, 10f, NavMesh.AllAreas))
+            Vector3 pos = Random.insideUnitSphere * 250f + center.transform.position;
+            
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(pos, out hit, 1000f, NavMesh.AllAreas))
             {
-                
-                npcs[i] = Instantiate(prefab, navHit.position, Quaternion.identity);
+                npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity);
                 npcAI nAI = npcs[i].GetComponent<npcAI>();
 
                 nAI.waypoints = poi;
@@ -70,7 +68,7 @@ public class NPCController : MonoBehaviour
             }
         }
 
-
+        
     }
 
     // Update is called once per frame
