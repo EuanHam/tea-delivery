@@ -1297,7 +1297,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7923261740536719972, guid: 1677df8a1e5874434a9e9665462d6e3a, type: 3}
   center: {fileID: 963584822}
-  mat: []
+  mat:
+  - {fileID: 2100000, guid: ba80dbbaef39f4ae690f584a5dbee857, type: 2}
+  - {fileID: 2100000, guid: 09e61c1beda6649b284d09a5b945c4b0, type: 2}
+  - {fileID: 2100000, guid: f5f5994c50f468a46bca2bc04c2fa350, type: 2}
   size: 100
   poi:
   - {fileID: 1980810487}
