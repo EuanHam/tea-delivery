@@ -1,70 +1,140 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public class MinimapRouteDrawer : MonoBehaviour
 {
     public Transform robot;
-    public Transform[] waypoints;
-    public float heightOffset;
-    public float reachDistance;
+    public Transform destination;
+    public IntersectionNode[] allNodes;
+
+    public float heightOffset = 100f;
+    public float recomputeInterval = 0.3f;
+    public float lineWidth = 12f;
+    public float nodeReachDistance = 15f;
+
+    private IntersectionNode lastPassedNode;
 
     private LineRenderer lr;
-
-    private int currentWaypointIndex = 0;
-
+    private float timer = 0f;
+    private List<IntersectionNode> currentPath = new List<IntersectionNode>();
 
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
-        lr.startWidth = 6f;
-        lr.endWidth = 6f;
+        lr.useWorldSpace = true;
+
+        lr.startWidth = lineWidth;
+        lr.endWidth = lineWidth;
+
+        // Constant width along whole line
+        lr.widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 1f);
     }
 
     void Update()
     {
-        UpdateWaypointProgress();
+        UpdatePassedNode();
+
+        timer += Time.deltaTime;
+
+        if (timer >= recomputeInterval)
+        {
+            timer = 0f;
+            RecalculatePath();
+        }
+
         DrawRoute();
     }
 
-    void UpdateWaypointProgress()
+    void UpdatePassedNode()
     {
-        if (robot == null || waypoints == null || currentWaypointIndex >= waypoints.Length)
+        if (robot == null || currentPath == null || currentPath.Count == 0)
             return;
 
         Vector3 robotFlat = robot.position;
-        Vector3 waypointFlat = waypoints[currentWaypointIndex].position;
-
         robotFlat.y = 0f;
-        waypointFlat.y = 0f;
 
-        if (Vector3.Distance(robotFlat, waypointFlat) <= reachDistance)
+        Vector3 firstNodeFlat = currentPath[0].transform.position;
+        firstNodeFlat.y = 0f;
+
+        float dist = Vector3.Distance(robotFlat, firstNodeFlat);
+
+        if (dist <= nodeReachDistance)
         {
-            currentWaypointIndex++;
+            lastPassedNode = currentPath[0];
+            currentPath.RemoveAt(0);
         }
+    }
+
+    void RecalculatePath()
+    {
+        if (robot == null || destination == null || allNodes == null || allNodes.Length == 0)
+        {
+            Debug.Log("Missing robot, destination, or allNodes");
+            return;
+        }
+
+        IntersectionNode startNode = FindNearestNode(robot.position);
+        IntersectionNode goalNode = FindNearestNode(destination.position);
+
+        List<IntersectionNode> newPath = AStarPathfinder.FindPath(startNode, goalNode);
+
+        if (newPath == null || newPath.Count == 0)
+        {
+            Debug.Log("A* returned null or empty path");
+            return;
+        }
+
+        Debug.Log("Path found with " + newPath.Count + " nodes");
+
+        currentPath = newPath;
     }
 
     void DrawRoute()
     {
-        if (robot == null || waypoints == null || currentWaypointIndex >= waypoints.Length)
+        if (robot == null || currentPath == null || currentPath.Count == 0)
         {
             lr.positionCount = 0;
             return;
         }
 
-        int remaining = waypoints.Length - currentWaypointIndex;
+        lr.startWidth = lineWidth;
+        lr.endWidth = lineWidth;
 
-        // robot position + remaining waypoints
-        lr.positionCount = remaining + 1;
+        lr.positionCount = currentPath.Count + 1;
 
         Vector3 robotPos = robot.position;
-        robotPos.y += heightOffset;
+        robotPos.y = heightOffset;
         lr.SetPosition(0, robotPos);
 
-        for (int i = 0; i < remaining; i++)
+        for (int i = 0; i < currentPath.Count; i++)
         {
-            Vector3 p = waypoints[currentWaypointIndex + i].position;
-            p.y += heightOffset;
+            Vector3 p = currentPath[i].transform.position;
+            p.y = heightOffset;
             lr.SetPosition(i + 1, p);
         }
+    }
+
+    IntersectionNode FindNearestNode(Vector3 position)
+    {
+        IntersectionNode nearest = null;
+        float bestDist = Mathf.Infinity;
+
+        foreach (IntersectionNode node in allNodes)
+        {
+            if (node == null) continue;
+
+            if (robot.position.z > node.transform.position.z && Mathf.Abs(robot.position.x - node.transform.position.x) < 10f)
+                continue;
+
+            float dist = Vector3.Distance(position, node.transform.position);
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                nearest = node;
+            }
+        }
+
+        return nearest;
     }
 }
