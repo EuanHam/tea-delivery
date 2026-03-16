@@ -15,14 +15,21 @@ public class npcAI : MonoBehaviour
     void Start()
     {
         currWaypoint = Random.Range(0, waypoints.Length);
-        nma = GetComponent<NavMeshAgent>();
+        if (waypoints != null && waypoints.Length > 0)
+        {
+            currWaypoint = Random.Range(0, waypoints.Length);
+            nma.SetDestination(waypoints[currWaypoint].transform.position);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
-        if (waypoints.Length != 0 && nma.remainingDistance < 1f && !nma.pathPending) setNextWaypoint();
+        if (waypoints.Length != 0 && nma.remainingDistance < 0.1f && !nma.pathPending) 
+        {
+            setNextWaypoint();
+        }
     }
 
     private void setNextWaypoint() 
