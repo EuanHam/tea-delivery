@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class NPCController : MonoBehaviour
 {
     public GameObject prefab, center;
+    public Material[] mat;
     public int size;
     public GameObject[] poi;
     private GameObject[] npcs;
@@ -35,6 +36,17 @@ public class NPCController : MonoBehaviour
             if (NavMesh.SamplePosition(pos, out hit, 1000f, NavMesh.AllAreas))
             {
                 npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity);
+
+                foreach (Transform child in npcs[i].transform)
+                {
+                    Renderer rend = child.GetComponent<Renderer>();
+
+                    if (rend != null)
+                    {
+                        //rend.material = mater;
+                    }
+                }
+
                 npcAI nAI = npcs[i].GetComponent<npcAI>();
 
                 nAI.waypoints = poi;

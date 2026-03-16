@@ -28,7 +28,6 @@ public class npcAI : MonoBehaviour
         anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
         if (waypoints.Length != 0 && nma.remainingDistance < 0.1f && !nma.pathPending) 
         {
-            Debug.Log("objective reached");
             setNextWaypoint();
         }
     }

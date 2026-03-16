@@ -6,15 +6,22 @@ public class CollisionControl : MonoBehaviour
     private Rigidbody[] rbs;
     public Animator anim;
     public Collider rootCollider;
+    private float timer = 0;
+    private bool start;
 
     void Awake()
     {
         rbs = GetComponentsInChildren<Rigidbody>();
         DisableRagdoll();
     }
+
     private void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag == "Player") EnableRagdoll(c);
+        if (c.gameObject.tag == "Player") 
+        {
+            EnableRagdoll(c);
+            Destroy(gameObject, Random.Range(5f, 10f));
+        }
         
     }
 
@@ -29,7 +36,6 @@ public class CollisionControl : MonoBehaviour
 
     private void EnableRagdoll(Collision c)
     {
-        Debug.Log("Enabled Ragdoll");
         rootCollider.enabled = false;
         anim.enabled = false;
         foreach (Rigidbody rb in rbs)
