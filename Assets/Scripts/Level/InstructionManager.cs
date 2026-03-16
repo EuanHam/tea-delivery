@@ -1,31 +1,26 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // If using new Input System
-using TMPro; // Add this for TextMeshPro
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using TMPro;
+using System.Collections.Generic;
 
 public class InstructionManager : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject instructionPanel;
-    public TextMeshProUGUI instructionText; // Changed from Text to TextMeshProUGUI
+    public TextMeshProUGUI instructionText;
     public GameObject congratsPanel;
     
-    [Header("Instructions")]
-    public string[] instructions = new string[]
-    {
-        "Welcome to the world Robbi! (Press space)",
-        "Your life's ambition is delivering drinks!",
-        "You currently have Jasmine Milk tea with boba!",
-        "Let's find the target to delivery the boba!",
-        "Use WASD to navigate!"
-    };
-    
+    private string[] instructions;
     private int currentInstructionIndex = 0;
     
     void Start()
     {
+        instructions = GetInstructionsForLevel();
+        
         if (instructionPanel != null)
         {
-            instructionPanel.SetActive(true); // Show at start
+            instructionPanel.SetActive(true);
             ShowInstruction(currentInstructionIndex);
         }
 
@@ -35,10 +30,52 @@ public class InstructionManager : MonoBehaviour
     
     void Update()
     {
-        // Adjust this based on your Input System setup
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             AdvanceInstruction();
+        }
+    }
+    
+    string[] GetInstructionsForLevel()
+    {
+        string levelName = SceneManager.GetActiveScene().name;
+        
+        switch (levelName)
+        {
+            case "Level0Tutorial":
+                return new string[]
+                {
+                    "Welcome to the world Robbi! (Press space)",
+                    "Your life's ambition is delivering drinks!",
+                    "You currently have Jasmine Milk tea with boba!",
+                    "Let's find the target to delivery the boba!",
+                    "Use WASD to navigate!"
+                };
+            
+            case "Level1":
+                return new string[]
+                {
+                    "Congrats on passing training! (Space space)",
+                    "The icecream truck owner wants matcha now!",
+                    "Some roads are barricaded now so find the right path!",
+                    "Pst pst hint: find the green space!",
+                    "Good luck!"
+                };
+            
+            case "Level2":
+                return new string[]
+                {
+                    "Level 2!"
+                };
+            
+            case "Level3":
+                return new string[]
+                {
+                    "Level 3!"
+                };
+            
+            default:
+                return new string[] { "Default" };
         }
     }
     
@@ -66,26 +103,10 @@ public class InstructionManager : MonoBehaviour
     
     public void ShowCongratulations()
     {
-        Debug.Log("ShowCongratulations called - hiding panel and showing congrats");
-        
         if (instructionPanel != null)
-        {
             instructionPanel.SetActive(false);
-            Debug.Log($"Instruction panel active state set to: {instructionPanel.activeSelf}");
-        }
-        else
-        {
-            Debug.LogError("instructionPanel is NULL!");
-        }
         
         if (congratsPanel != null)
-        {
             congratsPanel.SetActive(true);
-            Debug.Log($"Congrats panel active state set to: {congratsPanel.activeSelf}");
-        }
-        else
-        {
-            Debug.LogError("congratsPanel is NULL!");
-        }
     }
 }
