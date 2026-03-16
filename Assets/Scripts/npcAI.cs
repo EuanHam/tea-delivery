@@ -25,11 +25,18 @@ public class npcAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
-        if (waypoints.Length != 0 && nma.remainingDistance < 0.1f && !nma.pathPending) 
-        {
+        if (anim != null && nma != null && nma.enabled && nma.isOnNavMesh)
+            anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
+        
+
+        if (waypoints == null || waypoints.Length == 0)
+            return;
+
+        if (nma == null || !nma.enabled || !nma.isOnNavMesh)
+            return;
+
+        if (!nma.pathPending && nma.remainingDistance <= 0.1f)
             setNextWaypoint();
-        }
     }
 
     private void setNextWaypoint() 
