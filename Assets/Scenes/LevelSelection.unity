@@ -604,19 +604,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 298089622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 115829947}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &298089622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,19 +1498,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1624767984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Play()
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1624767984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,19 +1745,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1935775277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Play()
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1935775277
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -40,13 +40,13 @@ public class LevelSelectionController : MonoBehaviour
     void PlaySoundAndGoToTitleScreen()
     {
         PlaySound();
-        GoToTitleScreen();
+        StartCoroutine(GoToTitleScreenWithDelay(0.5f));
     }
     
     void PlaySoundThenLoadLevel(string levelName)
     {
         PlaySound();
-        LoadLevel(levelName);
+        StartCoroutine(LoadLevelWithDelay(levelName, 0.5f));
     }
     
     void PlaySound()
@@ -59,6 +59,18 @@ public class LevelSelectionController : MonoBehaviour
         {
             Debug.LogError("AudioSource not assigned!");
         }
+    }
+    
+    System.Collections.IEnumerator GoToTitleScreenWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("TitleScreen");
+    }
+    
+    System.Collections.IEnumerator LoadLevelWithDelay(string levelName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(levelName);
     }
     
     void GoToTitleScreen()
