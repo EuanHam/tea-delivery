@@ -2,16 +2,29 @@ using UnityEngine;
 
 public class LowResScaling : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int lastWidth;
+    private int lastHeight;
+    private RectTransform rt;
+
     void Start()
     {
-        RectTransform rt = GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(Screen.width, Screen.height) * 1.01f;
+        rt = GetComponent<RectTransform>();
+        UpdateSize();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Screen.width != lastWidth || Screen.height != lastHeight)
+        {
+            UpdateSize();
+        }
+    }
+
+    void UpdateSize()
+    {
+        lastWidth = Screen.width;
+        lastHeight = Screen.height;
+
+        rt.sizeDelta = new Vector2(Screen.width, Screen.height) * 1.01f;
     }
 }
