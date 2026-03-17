@@ -19,6 +19,9 @@ public class Level0MinimapRouteDrawer : MonoBehaviour
     private float timer = 0f;
     private List<IntersectionNode> currentPath = new List<IntersectionNode>();
 
+    private BobaDeliveryManager bobaDeliveryManager;
+    public Transform bobaShop;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -27,6 +30,13 @@ public class Level0MinimapRouteDrawer : MonoBehaviour
         // Set minimap nav line width
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
+    }
+
+    void Start()
+    {
+        bobaDeliveryManager = BobaDeliveryManager.Instance;
+        bobaShop = GameObject.Find("BobaShop").transform;
+        allNodes = FindObjectsOfType<IntersectionNode>();
     }
 
     void Update()
@@ -75,6 +85,30 @@ public class Level0MinimapRouteDrawer : MonoBehaviour
             Debug.Log("Missing robot, destination, or nodes");
             return;
         }
+
+        // in case it did not load in time
+        if (bobaDeliveryManager == null)
+        {
+            bobaDeliveryManager = BobaDeliveryManager.Instance;
+            if (bobaDeliveryManager == null) return;
+        }
+
+        if (!bobaDeliveryManager.hasBoba)
+        {
+            destination = bobaShop.transform;
+        }
+        else
+        {
+            if (bobaDeliveryManager.currentOrder == null ||
+                bobaDeliveryManager.currentOrder.deliveryLocation == null)
+            {
+                Debug.Log("Order not ready");
+                return;
+            }
+
+            destination = bobaDeliveryManager.currentOrder.deliveryLocation;
+        }
+        Debug.Log($"Recalculating path to {destination.name}");
 
         IntersectionNode startNode = FindNearestNode(robot.position);
         IntersectionNode goalNode = FindNearestNode(destination.position);
@@ -139,7 +173,7 @@ public class Level0MinimapRouteDrawer : MonoBehaviour
                 nearest = node;
             }
         }
-
+        Debug.Log($"Nearest node is {nearest.name}");
         return nearest;
     }
 }

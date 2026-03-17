@@ -16,9 +16,12 @@ public class InstructionManager : MonoBehaviour
     
     private string[] instructions;
     private int currentInstructionIndex = 0;
+
+    private BobaDeliveryManager bobaDeliveryManager;
     
     void Start()
     {
+        bobaDeliveryManager = BobaDeliveryManager.Instance;
         instructions = GetInstructionsForLevel();
         
         if (instructionPanel != null)
@@ -56,7 +59,7 @@ public class InstructionManager : MonoBehaviour
                 {
                     "Welcome to the world, Robbi!\n(Press space)",
                     "Your life's ambition is delivering drinks!",
-                    "You currently have Jasmine Milk tea with boba!",
+                    "You currently have " + bobaDeliveryManager.currentOrder.bobaType + " tea with boba!",
                     "Let's find the target to deliver the boba!",
                     "Use WASD to navigate!"
                 };
