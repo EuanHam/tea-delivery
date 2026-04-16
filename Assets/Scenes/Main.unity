@@ -1144,7 +1144,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 31
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1914,7 +1914,7 @@ PrefabInstance:
     - target: {fileID: 1183911192833805813, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8ec09216a821e4c87abe6b607449e895, type: 2}
+      objectReference: {fileID: 11400000, guid: d956e9b57762ed644b95ce6a3587fae4, type: 2}
     - target: {fileID: 1183911192833805813, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontColor.b
       value: 0.77254903
@@ -1930,7 +1930,7 @@ PrefabInstance:
     - target: {fileID: 1183911192833805813, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 6336206211573774498, guid: 8ec09216a821e4c87abe6b607449e895, type: 2}
+      objectReference: {fileID: -7631129712443469706, guid: d956e9b57762ed644b95ce6a3587fae4, type: 2}
     - target: {fileID: 1183911192833805813, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4291158000
@@ -2044,7 +2044,7 @@ PrefabInstance:
     - target: {fileID: 2754029910451219865, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8ec09216a821e4c87abe6b607449e895, type: 2}
+      objectReference: {fileID: 11400000, guid: d956e9b57762ed644b95ce6a3587fae4, type: 2}
     - target: {fileID: 2754029910451219865, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontColor.b
       value: 0.77254903
@@ -2064,7 +2064,7 @@ PrefabInstance:
     - target: {fileID: 2754029910451219865, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 6336206211573774498, guid: 8ec09216a821e4c87abe6b607449e895, type: 2}
+      objectReference: {fileID: -7631129712443469706, guid: d956e9b57762ed644b95ce6a3587fae4, type: 2}
     - target: {fileID: 2754029910451219865, guid: e56c29c991a2d134ab991ca43f459c1b, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4291158000
@@ -3536,7 +3536,7 @@ GameObject:
   - component: {fileID: 1921176688}
   - component: {fileID: 1921176687}
   - component: {fileID: 1921176686}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MinimapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

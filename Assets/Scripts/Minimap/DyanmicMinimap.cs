@@ -44,8 +44,11 @@ public class DyanmicMinimap : MonoBehaviour
 
     private void DrawRoute()
     {
-        if (src == null || dest == null) return;
-        
+        if (src == null || dest == null) {
+            lr.positionCount = 0;
+            return;
+        }
+
         lr.positionCount = path.corners.Length;
         lr.SetPosition(0, src.position);
 

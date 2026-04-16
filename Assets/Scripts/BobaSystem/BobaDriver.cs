@@ -30,6 +30,7 @@ public class BobaDriver : MonoBehaviour
         } else
         {
             ui.SetActive(false);
+            
             // TODO set minimap.dest to bobashop
         }
     }
