@@ -423,7 +423,6 @@ GameObject:
   - component: {fileID: 3314375387728444973}
   - component: {fileID: 1027500535364184050}
   - component: {fileID: 6195819365410626790}
-  - component: {fileID: 5927976699150189227}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -516,27 +515,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5927976699150189227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3126782640804690795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677d0c1b6ccc96d47bdfe6d8d9dc9da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bobaDeliveryManager: {fileID: 0}
-  robbi: {fileID: 0}
-  bobaTypeText: {fileID: 1478429444539846531}
-  customerNameText: {fileID: 2754029910451219865}
-  latitudeText: {fileID: 1723070952506295781}
-  longitudeText: {fileID: 524652965274409180}
-  timerText: {fileID: 1183911192833805813}
-  hudText: {fileID: 1639135597165681865}
-  locationText: {fileID: 7953757790415686292}
 --- !u!1 &3394098030911848975
 GameObject:
   m_ObjectHideFlags: 0
