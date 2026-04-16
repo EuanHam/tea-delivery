@@ -92,6 +92,15 @@ public class NPCController : MonoBehaviour
         
     }
 
+    public GameObject getRandomNPC()
+    {
+        GameObject npc = npcs[Random.Range(0, size)];
+
+        while (npc == null) npc = npcs[Random.Range(0, size)];
+
+        return npc;
+    }
+
     // Update is called once per frame
     void Update()
     {
