@@ -20,7 +20,7 @@ public class BobaDriver : MonoBehaviour
         if (load != null)
         {
             ui.SetActive(true);
-            minimap.dest = load.customer.transform;
+            minimap.dest = load.customer;
             load.ttl -= Time.deltaTime;
             time.text = string.Format("{0:N2}", load.ttl);
             if (load.ttl <= 0) {

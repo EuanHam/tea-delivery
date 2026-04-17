@@ -721,6 +721,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &455748210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 679125583900871206, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+  m_PrefabInstance: {fileID: 1066448362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &468105509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lr: {fileID: 1034374106}
   lineWidth: 1
-  src: {fileID: 1066448363}
+  src: {fileID: 455748210}
   dest: {fileID: 0}
   time: 0
 --- !u!120 &1034374106

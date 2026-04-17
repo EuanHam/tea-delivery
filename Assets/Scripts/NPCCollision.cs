@@ -23,9 +23,16 @@ public class CollisionControl : MonoBehaviour
     {
         if (c.gameObject.tag == "Player") 
         {
-            PlayWilhelmScream();
-            EnableRagdoll(c);
-            Destroy(gameObject, Random.Range(5f, 10f));
+            BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
+            if (bd.load != null && bd.load.customer == this.gameObject)
+            {
+                bd.load = null;
+                Debug.Log("Delivered Boba!");
+            } else {
+                PlayWilhelmScream();
+                EnableRagdoll(c);
+                Destroy(gameObject, Random.Range(5f, 10f));
+            }
         }
         
     }

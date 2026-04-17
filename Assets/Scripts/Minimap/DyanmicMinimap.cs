@@ -9,8 +9,8 @@ public class DyanmicMinimap : MonoBehaviour
     [SerializeField] private LineRenderer lr;
     public float lineWidth = 5f;
 
-    public Transform src;
-    public Transform dest;
+    public GameObject src;
+    public GameObject dest;
 
     [SerializeField] private float time;
 
@@ -37,8 +37,9 @@ public class DyanmicMinimap : MonoBehaviour
         {
             time = 0.0f;
 
-            NavMesh.CalculatePath(src.position, dest.position, NavMesh.AllAreas, path);
+            NavMesh.CalculatePath(src.transform.position, dest.transform.position, NavMesh.AllAreas, path);
         }
+
         if (path.status == NavMeshPathStatus.PathComplete) DrawRoute();
     }
 
@@ -50,7 +51,7 @@ public class DyanmicMinimap : MonoBehaviour
         }
 
         lr.positionCount = path.corners.Length;
-        lr.SetPosition(0, src.position);
+        lr.SetPosition(0, src.transform.position);
 
         for (int i = 1; i < path.corners.Length; i++)
         {
