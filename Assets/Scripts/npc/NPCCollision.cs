@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CollisionControl : MonoBehaviour
 {
@@ -26,10 +27,12 @@ public class CollisionControl : MonoBehaviour
             BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
             if (bd.load != null && bd.load.customer == this.gameObject)
             {
+                Debug.Log("Delivered Boba!");
+                
                 bd.load = null;
                 bd.balance += 100;
-                PlayYay();
-                Debug.Log("Delivered Boba!");
+                
+                StartCoroutine(startVictory());
             } else {
                 PlayWilhelmScream();
                 EnableRagdoll(c);
@@ -77,5 +80,16 @@ public class CollisionControl : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(yay, transform.position);
         }
+    }
+
+    private IEnumerator startVictory()
+    {
+        PlayYay();
+
+        anim.SetTrigger("victory");
+
+        yield return new WaitForSeconds(10f);
+
+        nma.isStopped = false;
     }
 }

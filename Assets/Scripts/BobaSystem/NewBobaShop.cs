@@ -35,6 +35,7 @@ public class NewBobaShop : MonoBehaviour
                 
                 bd.load = orders.Dequeue();
                 bd.load.customer.GetComponent<npcAI>().stopAgent(true);
+                bd.load.customer.GetComponent<Animator>().SetTrigger("customer");
             }
         }
         
