@@ -248,7 +248,7 @@ MonoBehaviour:
   ui: {fileID: 2056327456}
   balanceCondition: f4010000e8030000d0070000
   timeCondition:
-  - 2
+  - 60
   - 120
   - 120
   time: 0
@@ -4692,8 +4692,6 @@ MonoBehaviour:
   levelUI: {fileID: 1117833362}
   timeText: {fileID: 1249853904}
   endUI: {fileID: 1138479543}
-  endText: {fileID: 0}
-  bell: {fileID: 0}
 --- !u!1 &2075101898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,11 +5301,11 @@ SceneRoots:
   - {fileID: 1798788918}
   - {fileID: 127760350}
   - {fileID: 1955719159}
+  - {fileID: 406483568}
   - {fileID: 2056327455}
   - {fileID: 2555645103463597023}
   - {fileID: 786317756}
   - {fileID: 1022421671}
   - {fileID: 2226070022727842309}
   - {fileID: 2075101900}
-  - {fileID: 406483568}
   - {fileID: 963584818}
