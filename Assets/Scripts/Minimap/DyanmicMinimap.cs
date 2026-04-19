@@ -51,7 +51,6 @@ public class DyanmicMinimap : MonoBehaviour
                                     path);
 
         }
-        Debug.Log(path.status);
         if (path.status == NavMeshPathStatus.PathComplete) DrawRoute();
     }
 
