@@ -28,7 +28,7 @@ public class CollisionControl : MonoBehaviour
             if (bd.load != null && bd.load.customer == this.gameObject)
             {
                 Debug.Log("Delivered Boba!");
-                
+
                 bd.load = null;
                 bd.balance += 100;
                 
