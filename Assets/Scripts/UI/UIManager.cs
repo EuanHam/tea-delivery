@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelUI;
     [SerializeField] private TMP_Text timeText;
 
+    [SerializeField] private GameObject endUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +43,9 @@ public class UIManager : MonoBehaviour
         deliveryUI.SetActive(false);
         instructionUI.SetActive(true);
         levelUI.SetActive(true);
+        endUI.SetActive(false);
+
+
 
         ShowInstruction(instructionIndex);
     }
@@ -60,6 +65,11 @@ public class UIManager : MonoBehaviour
         balanceText.text = "$" + player.balance.ToString();
 
         timeText.text = TimeSpan.FromSeconds(lm.time).ToString(@"mm\:ss");;
+
+        if (lm.time <=0)
+        {
+            endUI.SetActive(true);
+        }
     }
 
     private void ShowInstruction(int index)

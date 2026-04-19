@@ -3,16 +3,11 @@ using System.Collections;
 
 public class CollisionControl : MonoBehaviour
 {
-
-    private Rigidbody[] rbs;
-    public Animator anim;
-    public UnityEngine.AI.NavMeshAgent nma;
-    public Collider rootCollider;
-    private float timer = 0;
-    private bool start;
-    
-    [Header("Audio")]
+    [SerializeField] private Animator anim;
+    [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
+    [SerializeField] private Collider rootCollider;
     [SerializeField] private AudioClip wilhelmScream, yay;
+    private Rigidbody[] rbs;
 
     void Awake()
     {
@@ -69,22 +64,6 @@ public class CollisionControl : MonoBehaviour
         }
     }
     
-    private void PlayWilhelmScream()
-    {
-        if (wilhelmScream != null)
-        {
-            AudioSource.PlayClipAtPoint(wilhelmScream, transform.position);
-        }
-    }
-
-    private void PlayYay()
-    {
-        if (yay != null)
-        {
-            AudioSource.PlayClipAtPoint(yay, transform.position);
-        }
-    }
-
     private IEnumerator startVictory()
     {
         PlayYay();
@@ -94,5 +73,20 @@ public class CollisionControl : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         nma.isStopped = false;
+    }
+    public void PlayWilhelmScream()
+    {
+        if (wilhelmScream != null)
+        {
+            AudioSource.PlayClipAtPoint(wilhelmScream, transform.position);
+        }
+    }
+
+    public void PlayYay()
+    {
+        if (yay != null)
+        {
+            AudioSource.PlayClipAtPoint(yay, transform.position);
+        }
     }
 }
