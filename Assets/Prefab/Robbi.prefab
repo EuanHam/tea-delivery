@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5577699528058421853}
   - component: {fileID: 203607615970965560}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: hitbox
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692af69a8d751ce46a72cbca9b6c933b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balance: 0
+  minimap: {fileID: 0}
+  BobaShop: {fileID: 0}
+  ui: {fileID: 0}
+  time_text: {fileID: 0}
+  name_text: {fileID: 0}
+  balance_text: {fileID: 0}
 --- !u!1 &1141494550072858493
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +287,7 @@ GameObject:
   - component: {fileID: 5801085104364308443}
   - component: {fileID: 5996201397577221060}
   m_Layer: 0
-  m_Name: robbi
+  m_Name: model
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
