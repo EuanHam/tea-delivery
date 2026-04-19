@@ -50,4 +50,9 @@ public class npcAI : MonoBehaviour
 
         nma.SetDestination(waypoints[currWaypoint].transform.position);
     }
+
+    public void stopAgent(bool cond)
+    {
+        nma.isStopped = cond;
+    }
 }
