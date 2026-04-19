@@ -12,9 +12,7 @@ public class UIManager : MonoBehaviour
     };
     private int instructionIndex;
 
-
     [SerializeField] private LevelManager lm;
-
 
     [SerializeField] private BobaDriver player;
     [SerializeField] private GameObject BobaShop;

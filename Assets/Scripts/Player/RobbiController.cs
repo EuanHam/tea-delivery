@@ -4,25 +4,26 @@ using UnityEngine.AI;
 
 public class RobbiController : MonoBehaviour
 {
-    public bool isDrifting;
-    public Rigidbody rb, sphere;
+    [SerializeField] private UIManager ui;
+    [SerializeField] private bool isDrifting;
+    [SerializeField] private Rigidbody rb, sphere;
 
-    public Transform frontWheels, rearWheel;
-    public float acceleration;
-    public float reverseAcceleration;
+    [SerializeField] private Transform frontWheels, rearWheel;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float reverseAcceleration;
 
-    public float currentSpeed, speed;
-    public float currentRotate, rotate;
+    [SerializeField] private float currentSpeed, speed;
+    [SerializeField] private float currentRotate, rotate;
 
-    public float turnSpeed;
+    [SerializeField] private float turnSpeed;
 
-    public float topSpeed;
+    [SerializeField] private float topSpeed;
 
-    public float reverseSpeed;
+    [SerializeField] private float reverseSpeed;
 
-    public float drag;
+    [SerializeField] private float drag;
 
-    public float gravity;
+    [SerializeField] private float gravity;
 
 
 
@@ -38,11 +39,13 @@ public class RobbiController : MonoBehaviour
     {
         speed = 0f;
         rotate = 0f;
-        
-        if (Keyboard.current.wKey.isPressed) speed = 1f;
-        if (Keyboard.current.sKey.isPressed) speed = -1f;
-        if (Keyboard.current.aKey.isPressed) rotate = -1f;
-        if (Keyboard.current.dKey.isPressed) rotate = 1f;
+        if (!ui.instructionActive())
+        {
+            if (Keyboard.current.wKey.isPressed) speed = 1f;
+            if (Keyboard.current.sKey.isPressed) speed = -1f;
+            if (Keyboard.current.aKey.isPressed) rotate = -1f;
+            if (Keyboard.current.dKey.isPressed) rotate = 1f;
+        }
     }
 
     void LateUpdate()
