@@ -29,10 +29,6 @@ public class BobaDeliveryManager : MonoBehaviour
     
     void Start()
     {
-        customers.Add(new Customer { name = "Alice", location = GameObject.Find("AliceTarget").transform});
-        customers.Add(new Customer { name = "Baxtor", location = GameObject.Find("BaxtorTarget").transform});
-        customers.Add(new Customer { name = "Chip", location = GameObject.Find("ChipTarget").transform});
-        GenerateOrder();
         UpdateHUD("Pick up your boba order from the shop!");
     }
     
@@ -42,20 +38,7 @@ public class BobaDeliveryManager : MonoBehaviour
             hudText.text = message;
     }
 
-    public void GenerateOrder()
-    {
-        Customer randomCustomer = customers[Random.Range(0, customers.Count)];
-        currentOrder = new Order
-        {
-            customer = randomCustomer,
-            bobaType = (Boba)Random.Range(0, System.Enum.GetValues(typeof(Boba)).Length),
-            deliveryLocation = randomCustomer.location
-        };
-        
-        timeLeft = 60f; // 60 seconds 
-        timeRunning = true;
-    }
-    
+
     public void CollectBoba()
     {
         if (!gameWon)

@@ -27,6 +27,7 @@ public class CollisionControl : MonoBehaviour
             if (bd.load != null && bd.load.customer == this.gameObject)
             {
                 bd.load = null;
+                bd.balance += 100;
                 Debug.Log("Delivered Boba!");
             } else {
                 PlayWilhelmScream();
