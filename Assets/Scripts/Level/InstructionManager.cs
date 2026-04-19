@@ -21,7 +21,6 @@ public class InstructionManager : MonoBehaviour
     
     void Start()
     {
-        bobaDeliveryManager = BobaDeliveryManager.Instance;
         instructions = GetInstructionsForLevel();
         
         if (instructionPanel != null)
@@ -57,11 +56,9 @@ public class InstructionManager : MonoBehaviour
             case "Level0Tutorial":
                 return new string[]
                 {
-                    "Welcome to the world, Robbi!\n(Press space)",
-                    "Your life's ambition is delivering drinks!",
-                    "You currently have " + bobaDeliveryManager.currentOrder.bobaType + " tea with boba!",
-                    "Let's find the target to deliver the boba!",
-                    "Use WASD to navigate!"
+                    "Say Hello to Robbi!\n(Press space)",
+                    "Help Robbi find the Bubble Tea Shop!",
+                    "Use WASD to move around!"
                 };
             
             case "Level1":
