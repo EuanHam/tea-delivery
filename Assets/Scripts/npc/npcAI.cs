@@ -20,6 +20,8 @@ public class npcAI : MonoBehaviour
             currWaypoint = Random.Range(0, waypoints.Length);
             nma.SetDestination(waypoints[currWaypoint].transform.position);
         }
+
+        //Debug.Log(nma.agentTypeID);
     }
 
     // Update is called once per frame

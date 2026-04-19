@@ -6,6 +6,7 @@ public class BobaDriver : MonoBehaviour
     public int balance;
 
     [SerializeField] private DyanmicMinimap minimap;
+    [SerializeField] private GameObject BobaShop;
 
     [SerializeField] private GameObject ui;
     [SerializeField] private TMP_Text time_text, name_text, balance_text;
@@ -26,7 +27,7 @@ public class BobaDriver : MonoBehaviour
             load.ttl -= Time.deltaTime;
             time_text.text = string.Format("{0:N2}", load.ttl);
             if (load.ttl <= 0) {
-                minimap.dest = null;
+                minimap.dest = BobaShop;
                 load = null;
             }
         } else
@@ -34,6 +35,7 @@ public class BobaDriver : MonoBehaviour
             ui.SetActive(false);
             
             // TODO set minimap.dest to bobashop
+            minimap.dest = BobaShop;
         }
         balance_text.text = "$" + balance.ToString();
     }

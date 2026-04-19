@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - sidewalk
+  - walkable
   - Water
   - UI
-  - crosswalk
-  - road
+  - player
+  - 
   - 
   - 
   - 

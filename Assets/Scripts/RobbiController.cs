@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 public class RobbiController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class RobbiController : MonoBehaviour
     {
         Application.targetFrameRate = 120;
         sphere.interpolation = RigidbodyInterpolation.Interpolate;
+
     }
     void Update()
     {

@@ -32,7 +32,6 @@ public class NewBobaShop : MonoBehaviour
             
             if (bd != null && bd.load == null && orders.Count != 0)
             {
-                
                 bd.load = orders.Dequeue();
                 bd.load.customer.GetComponent<npcAI>().stopAgent(true);
                 bd.load.customer.GetComponent<Animator>().SetTrigger("customer");

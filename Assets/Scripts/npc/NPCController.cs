@@ -33,7 +33,12 @@ public class NPCController : MonoBehaviour
             Vector3 pos = Random.insideUnitSphere * 250f + center.transform.position;
             
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(pos, out hit, 1000f, NavMesh.AllAreas))
+
+            NavMeshQueryFilter filter = new NavMeshQueryFilter();
+            filter.agentTypeID = NavMesh.GetSettingsByIndex(1).agentTypeID;
+            filter.areaMask = NavMesh.AllAreas;
+
+            if (NavMesh.SamplePosition(pos, out hit, 1000f, filter))
             {
                 npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity, transform);
 

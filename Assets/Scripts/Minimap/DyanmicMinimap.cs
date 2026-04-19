@@ -12,6 +12,8 @@ public class DyanmicMinimap : MonoBehaviour
     public GameObject src;
     public GameObject dest;
 
+    private NavMeshQueryFilter filter;
+
     [SerializeField] private float time;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,18 +28,28 @@ public class DyanmicMinimap : MonoBehaviour
         lr.useWorldSpace = true;
 
         lr.startWidth = lr.endWidth = lineWidth;
+
+        filter = new NavMeshQueryFilter();
+        filter.agentTypeID = NavMesh.GetSettingsByIndex(0).agentTypeID;
+        filter.areaMask = NavMesh.AllAreas;
     }
 
     // Update is called once per frame
-    async Task Update()
+    void Update()
     {
         time += Time.deltaTime;
+
+        //Debug.Log(NavMesh.agentTypeID);
 
         if (time > 0.5f)
         {
             time = 0.0f;
+            
+            NavMesh.CalculatePath(src.transform.position, 
+                                    dest.transform.position, 
+                                    filter,
+                                    path);
 
-            NavMesh.CalculatePath(src.transform.position, dest.transform.position, NavMesh.AllAreas, path);
         }
 
         if (path.status == NavMeshPathStatus.PathComplete) DrawRoute();
@@ -45,7 +57,7 @@ public class DyanmicMinimap : MonoBehaviour
 
     private void DrawRoute()
     {
-        if (src == null || dest == null) {
+        if (src == null) {
             lr.positionCount = 0;
             return;
         }
