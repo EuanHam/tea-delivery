@@ -11,7 +11,7 @@ public class CollisionControl : MonoBehaviour
     private bool start;
     
     [Header("Audio")]
-    [SerializeField] private AudioClip wilhelmScream;
+    [SerializeField] private AudioClip wilhelmScream, yay;
 
     void Awake()
     {
@@ -28,6 +28,7 @@ public class CollisionControl : MonoBehaviour
             {
                 bd.load = null;
                 bd.balance += 100;
+                PlayYay();
                 Debug.Log("Delivered Boba!");
             } else {
                 PlayWilhelmScream();
@@ -67,6 +68,14 @@ public class CollisionControl : MonoBehaviour
         if (wilhelmScream != null)
         {
             AudioSource.PlayClipAtPoint(wilhelmScream, transform.position);
+        }
+    }
+
+    private void PlayYay()
+    {
+        if (yay != null)
+        {
+            AudioSource.PlayClipAtPoint(yay, transform.position);
         }
     }
 }
