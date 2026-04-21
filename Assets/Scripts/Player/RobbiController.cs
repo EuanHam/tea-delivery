@@ -13,14 +13,15 @@ public class RobbiController : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private float reverseAcceleration;
 
-    [SerializeField] private float currentSpeed, speed;
-    [SerializeField] private float currentRotate, rotate;
+    [SerializeField] private float speed;
+    [SerializeField] private float rotate;
 
     [SerializeField] private float turnSpeed;
     [SerializeField] private float topSpeed;
     [SerializeField] private float reverseSpeed;
     [SerializeField] private float drag;
     [SerializeField] private float gravity;
+    [SerializeField] private LayerMask layerMask;
     private float Drag = 0.95f;
 
     void Start()
@@ -58,8 +59,6 @@ public class RobbiController : MonoBehaviour
         else if (speed < 0f && sphere.linearVelocity.magnitude < reverseSpeed)
             sphere.AddForce(transform.forward * speed * reverseAcceleration, ForceMode.Acceleration);
 
-
-
         // Adding gravity
         sphere.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
 
@@ -77,6 +76,12 @@ public class RobbiController : MonoBehaviour
         if (Mathf.Abs(speed) < 0.1f)
         {
             localVel.z *= 0.98f;
+        }
+
+        RaycastHit fl, fr, bl, br;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out fl, Mathf.Infinity, layerMask)) 
+        {
+            Debug.Log("Ray Hit");
         }
 
         sphere.linearVelocity = transform.TransformDirection(localVel);

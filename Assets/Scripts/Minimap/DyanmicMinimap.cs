@@ -6,10 +6,10 @@ public class DyanmicMinimap : MonoBehaviour
 {
     private NavMeshPath path;
 
-    [SerializeField] private LineRenderer lr;
+    [SerializeField] private LineRenderer lineRenderer;
     public float lineWidth = 5f;
 
-    public GameObject src;
+    public GameObject target;
     public GameObject dest;
 
     private NavMeshQueryFilter filter;
@@ -25,9 +25,9 @@ public class DyanmicMinimap : MonoBehaviour
 
     void Awake()
     {
-        lr.useWorldSpace = true;
+        lineRenderer.useWorldSpace = true;
 
-        lr.startWidth = lr.endWidth = lineWidth;
+        lineRenderer.startWidth = lineRenderer.endWidth = lineWidth;
 
         filter = new NavMeshQueryFilter();
         filter.agentTypeID = NavMesh.GetSettingsByIndex(0).agentTypeID;
@@ -45,7 +45,7 @@ public class DyanmicMinimap : MonoBehaviour
         {
             time = 0.0f;
             
-            NavMesh.CalculatePath(src.transform.position, 
+            NavMesh.CalculatePath(target.transform.position, 
                                     dest.transform.position, 
                                     filter,
                                     path);
@@ -56,17 +56,17 @@ public class DyanmicMinimap : MonoBehaviour
 
     private void DrawRoute()
     {
-        if (src == null) {
-            lr.positionCount = 0;
+        if (target == null) {
+            lineRenderer.positionCount = 0;
             return;
         }
 
-        lr.positionCount = path.corners.Length;
-        lr.SetPosition(0, src.transform.position);
+        lineRenderer.positionCount = path.corners.Length;
+        lineRenderer.SetPosition(0, target.transform.position);
 
         for (int i = 1; i < path.corners.Length; i++)
         {
-            lr.SetPosition(i , path.corners[i]);
+            lineRenderer.SetPosition(i , path.corners[i]);
         }
     }
 }

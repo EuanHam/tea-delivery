@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class NewBobaShop : MonoBehaviour
 {
     private Queue<NewOrder> orders;
-    [SerializeField] private NPCController npcController;
+    [SerializeField] private NPCController npcManager;
     [SerializeField] private float nextOrder;
     [SerializeField] private float low, upper;
 
@@ -19,7 +19,7 @@ public class NewBobaShop : MonoBehaviour
         nextOrder -= Time.deltaTime;
         if (nextOrder <= 0)
         {
-            orders.Enqueue(new NewOrder(npcController.getRandomNPC(), low, upper));
+            orders.Enqueue(new NewOrder(npcManager.getRandomNPC(), low, upper));
             nextOrder = Random.Range(7f, 10f);
         }
     }

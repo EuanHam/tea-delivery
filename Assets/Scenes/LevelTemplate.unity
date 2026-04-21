@@ -1019,6 +1019,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
+      propertyPath: npcManager
+      value: 
+      objectReference: {fileID: 1535302313}
+    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: npcController
       value: 
       objectReference: {fileID: 1535302313}
@@ -1472,7 +1476,7 @@ Transform:
   m_GameObject: {fileID: 297797740}
   serializedVersion: 2
   m_LocalRotation: {x: -0.35385057, y: -0.02445816, z: 0.009044744, w: -0.93493843}
-  m_LocalPosition: {x: 50.222466, y: 7.6982393, z: -138.7706}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3349,6 +3353,10 @@ PrefabInstance:
       propertyPath: BobaShop
       value: 
       objectReference: {fileID: 245025660}
+    - target: {fileID: 679125583900871206, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: m_Name
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 3383129688572848464, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3401,6 +3409,34 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 748281878}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: drag
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: gravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: topSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: turnSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: reverseAcceleration
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4143,7 +4179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f06c007ec99a849993eb0f3085ca2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm: {fileID: 364705407}
+  levelManager: {fileID: 364705407}
   player: {fileID: 735149944}
   audioSource: {fileID: 1032522914}
   bell: {fileID: 8300000, guid: dd3bcc148c4670941bfc32d0cd35b9a7, type: 3}
@@ -7559,6 +7595,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735149945}
     - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 735149945}
+    - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: BobaShop
       value: 
       objectReference: {fileID: 0}
@@ -7566,6 +7606,10 @@ PrefabInstance:
       propertyPath: lineWidth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 1822231715}
     - target: {fileID: 3568192636363105259, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: m_Name
       value: Minimap
@@ -7614,6 +7658,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566199b6f1fe9a349b5ba6e491b8feef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!120 &1822231715 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 4372489587404814206, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+  m_PrefabInstance: {fileID: 1822231713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1831962788
 PrefabInstance:
   m_ObjectHideFlags: 0

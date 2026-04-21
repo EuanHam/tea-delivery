@@ -2481,6 +2481,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2078754538}
     - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1460983649}
+    - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: BobaShop
       value: 
       objectReference: {fileID: 857024825882804974}
@@ -2488,6 +2492,10 @@ PrefabInstance:
       propertyPath: lineWidth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 2143584518}
     - target: {fileID: 3568192636363105259, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: m_Name
       value: Minimap
@@ -4588,7 +4596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f06c007ec99a849993eb0f3085ca2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm: {fileID: 127760349}
+  levelManager: {fileID: 127760349}
   player: {fileID: 1460983649}
   audioSource: {fileID: 1955719158}
   bell: {fileID: 8300000, guid: dd3bcc148c4670941bfc32d0cd35b9a7, type: 3}
@@ -5001,6 +5009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566199b6f1fe9a349b5ba6e491b8feef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!120 &2143584518 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 4372489587404814206, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
+  m_PrefabInstance: {fileID: 1022421671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &857024825882804974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7239891755714302044, guid: 014a17176a300724c9809207d7f20e97, type: 3}
@@ -5116,6 +5129,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
+      propertyPath: npcManager
+      value: 
+      objectReference: {fileID: 406483567}
     - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: npcController
       value: 
