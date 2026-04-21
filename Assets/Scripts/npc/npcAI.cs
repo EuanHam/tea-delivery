@@ -37,7 +37,7 @@ public class npcAI : MonoBehaviour
         if (nma == null || !nma.enabled || !nma.isOnNavMesh)
             return;
 
-        if (!nma.pathPending && nma.remainingDistance <= 0.1f)
+        if (!nma.pathPending && nma.remainingDistance <= 0.75f)
             setNextWaypoint();
     }
 

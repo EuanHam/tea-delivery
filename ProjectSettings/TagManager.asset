@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 3
   tags:
   - Vehicle
+  - Sidewalk
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - walkable
+  - 
   - Water
   - UI
   - player
-  - 
-  - 
+  - non-walkable
+  - walkable
   - 
   - 
   - 
@@ -51,3 +53,4 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
+  - Light Layer 8

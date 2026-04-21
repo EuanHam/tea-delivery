@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviour
                 time = timeCondition[1];
                 break;
             default:
+                //TODO FIX DEFAULT WIN TIME AND BALANCE COND
+                winBalance = balanceCondition[0];
+                time = timeCondition[0];
                 break;
         }
     }
