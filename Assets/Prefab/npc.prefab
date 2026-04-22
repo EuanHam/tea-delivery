@@ -80,10 +80,10 @@ PrefabInstance:
       addedObject: {fileID: 1605928175878500698}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1196656363726012530}
+      addedObject: {fileID: 4266258690284773425}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4266258690284773425}
+      addedObject: {fileID: 1109868369471621221}
     - targetCorrespondingSourceObject: {fileID: -1114740463760593612, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8447353689833949916}
@@ -1187,23 +1187,6 @@ MonoBehaviour:
   nma: {fileID: 5688209990914103016}
   waypoints: []
   currWaypoint: 0
---- !u!114 &1196656363726012530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7923261740536719972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f3dd93cfadc4eadb9737bd6f9ace1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 3485479257594915492}
-  nma: {fileID: 5688209990914103016}
-  rootCollider: {fileID: 4266258690284773425}
-  wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
-  yay: {fileID: 8300000, guid: a71fdfad345a9d64fa3c5ef63c3f30bc, type: 3}
 --- !u!136 &4266258690284773425
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1227,6 +1210,25 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &1109868369471621221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923261740536719972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f3dd93cfadc4eadb9737bd6f9ace1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpManager: {fileID: 0}
+  anim: {fileID: 3485479257594915492}
+  nma: {fileID: 5688209990914103016}
+  rootCollider: {fileID: 4266258690284773425}
+  wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
+  yay: {fileID: 8300000, guid: a71fdfad345a9d64fa3c5ef63c3f30bc, type: 3}
+  player: {fileID: 0}
 --- !u!1 &8383634501908429319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543848922086812978, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}

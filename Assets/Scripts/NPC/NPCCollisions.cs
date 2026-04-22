@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
-
-public class NPCCollision : MonoBehaviour
+public class NPCCollisions : MonoBehaviour
 {
-    public PowerUpManager powerUpManager;
+public PowerUpManager powerUpManager;
     [SerializeField] private Animator anim;
     [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
     [SerializeField] private Collider rootCollider;
     [SerializeField] private AudioClip wilhelmScream, yay;
+    [SerializeField] private BobaDriver player;
 
     private Rigidbody[] rbs;
 
@@ -21,24 +21,25 @@ public class NPCCollision : MonoBehaviour
     {
         if (c.gameObject.tag == "Player") 
         {
-
             bool invul = powerUpManager.isInvunerable();
-
-            BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
-
-            if (bd.load != null && bd.load.customer == this.gameObject)
+            if (player.load != null && player.load.customer == this.gameObject || invul)
             {
+
+                if (invul) return;
+
                 Debug.Log("Delivered Boba!");
 
-                bd.load = null;
-                bd.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
+                player.load = null;
+                player.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
                 
                 StartCoroutine(startVictory());
-            } else if (!invul) {
-                bd.balance = Mathf.Max(0, bd.balance - 10);
+            } else {
+                player.balance = Mathf.Max(0, player.balance - 10);
                 PlayWilhelmScream();
                 EnableRagdoll(c);
                 Destroy(gameObject, Random.Range(5f, 10f));
+
+
             }
         }
         

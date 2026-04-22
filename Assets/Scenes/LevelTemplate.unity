@@ -1544,6 +1544,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4843451942646259921, guid: 08345e5246a84a5409a887d4ed21eda0, type: 3}
   m_PrefabInstance: {fileID: 314094379}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &324130789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324130790}
+  - component: {fileID: 324130791}
+  m_Layer: 0
+  m_Name: PowerUpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &324130790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324130789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.805393, y: -4.2017775, z: -13.029709}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324130791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324130789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08e6371126f9dd41862c6f73564ecdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 364705407}
+  prefab: {fileID: 953330064416729997, guid: 8279a2cfb099abf43af4f2c1bf3874d6, type: 3}
+  lo: 1
+  hi: 20
+  player: {fileID: 735149942}
+  invulnerableTimer: 0
+  doubleMoneyTimer: 0
 --- !u!1001 &348192787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3530,6 +3581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lm: {fileID: 364705407}
+  powerUpManager: {fileID: 0}
   player: {fileID: 735149943}
   BobaShop: {fileID: 245025660}
   balanceUI: {fileID: 381640929}
@@ -6362,6 +6414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7482af0461c4d33adbfdfe00137538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpManager: {fileID: 324130791}
   prefab: {fileID: 7923261740536719972, guid: 1677df8a1e5874434a9e9665462d6e3a, type: 3}
   center: {fileID: 1467692921}
   mat:
@@ -8958,6 +9011,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1863170264}
   - {fileID: 297797745}
+  - {fileID: 324130790}
   - {fileID: 748281879}
   - {fileID: 1032522915}
   - {fileID: 1333140537}

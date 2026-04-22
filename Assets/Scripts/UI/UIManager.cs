@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     private int instructionIndex;
 
     [SerializeField] private LevelManager lm;
+    [SerializeField] private PowerUpManager powerUpManager;
 
     [SerializeField] private BobaDriver player;
     [SerializeField] private GameObject BobaShop;
@@ -31,7 +32,6 @@ public class UIManager : MonoBehaviour
     // UI for Level
     [SerializeField] private GameObject levelUI;
     [SerializeField] private TMP_Text timeText;
-
     [SerializeField] private GameObject endUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,6 +70,8 @@ public class UIManager : MonoBehaviour
         {
             endUI.SetActive(true);
         }
+
+
     }
 
     private void ShowInstruction(int index)
