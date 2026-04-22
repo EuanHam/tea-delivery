@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelUI;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private GameObject endUI;
+    [SerializeField] private GameObject doubleMoneyUI;
+    [SerializeField] private GameObject invulnerableUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,8 +46,8 @@ public class UIManager : MonoBehaviour
         instructionUI.SetActive(true);
         levelUI.SetActive(true);
         endUI.SetActive(false);
-
-
+        doubleMoneyUI.SetActive(false);
+        invulnerableUI.SetActive(false);
 
         ShowInstruction(instructionIndex);
     }
@@ -70,6 +72,27 @@ public class UIManager : MonoBehaviour
         {
             endUI.SetActive(true);
         }
+
+        if (powerUpManager != null)
+        {
+            if (powerUpManager.isInvunerable()) 
+            {
+                invulnerableUI.SetActive(true);
+            }
+            else {
+                invulnerableUI.SetActive(false);
+            }
+
+            if (powerUpManager.isDoubleMoney()) 
+            {
+                doubleMoneyUI.SetActive(true);
+            }
+            else
+            {
+                invulnerableUI.SetActive(false);
+            }
+        }
+
 
 
     }

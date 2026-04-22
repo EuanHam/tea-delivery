@@ -7,7 +7,7 @@ public class NPCCollision : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
     [SerializeField] private Collider rootCollider;
-    [SerializeField] private AudioClip wilhelmScream, yay;
+    [SerializeField] private AudioClip wilhelmScream, yay, cash_register;
 
     private Rigidbody[] rbs;
 
@@ -32,7 +32,7 @@ public class NPCCollision : MonoBehaviour
 
                 bd.load = null;
                 bd.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
-                
+                playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul) {
                 bd.balance = Mathf.Max(0, bd.balance - 10);
@@ -91,6 +91,13 @@ public class NPCCollision : MonoBehaviour
         if (yay != null)
         {
             AudioSource.PlayClipAtPoint(yay, transform.position);
+        }
+    }
+    public void playCashRegister()
+    {
+        if (cash_register != null)
+        {
+            AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
     }
 }

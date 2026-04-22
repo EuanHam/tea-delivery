@@ -11,7 +11,6 @@ public class PowerUpManager : MonoBehaviour
     public float invulnerableTimer;
     public float doubleMoneyTimer;
 
-
     void Start()
     {
         time = Random.Range(lo, hi);

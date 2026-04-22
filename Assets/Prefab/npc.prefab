@@ -1228,7 +1228,7 @@ MonoBehaviour:
   rootCollider: {fileID: 4266258690284773425}
   wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
   yay: {fileID: 8300000, guid: a71fdfad345a9d64fa3c5ef63c3f30bc, type: 3}
-  player: {fileID: 0}
+  cash_register: {fileID: 8300000, guid: 0fb6a1540cfb4484b9749152830cd1b6, type: 3}
 --- !u!1 &8383634501908429319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543848922086812978, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}

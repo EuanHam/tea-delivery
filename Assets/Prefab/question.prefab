@@ -85,6 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpManager: {fileID: 0}
+  moreTime: {fileID: 8300000, guid: 512621fc0657a0449815f01f7142583c, type: 3}
+  shield: {fileID: 8300000, guid: a18a3db770ea73544964c11633c03c77, type: 3}
+  coins: {fileID: 8300000, guid: 8c205f019d7c516499cff67ec421126e, type: 3}
 --- !u!135 &838386719606231960
 SphereCollider:
   m_ObjectHideFlags: 0

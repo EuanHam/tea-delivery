@@ -6,7 +6,7 @@ public PowerUpManager powerUpManager;
     [SerializeField] private Animator anim;
     [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
     [SerializeField] private Collider rootCollider;
-    [SerializeField] private AudioClip wilhelmScream, yay;
+    [SerializeField] private AudioClip wilhelmScream, yay, cash_register;
     [SerializeField] private BobaDriver player;
 
     private Rigidbody[] rbs;
@@ -31,7 +31,7 @@ public PowerUpManager powerUpManager;
 
                 player.load = null;
                 player.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
-                
+                playCashRegister();
                 StartCoroutine(startVictory());
             } else {
                 player.balance = Mathf.Max(0, player.balance - 10);
@@ -92,6 +92,14 @@ public PowerUpManager powerUpManager;
         if (yay != null)
         {
             AudioSource.PlayClipAtPoint(yay, transform.position);
+        }
+    }
+
+    public void playCashRegister()
+    {
+        if (cash_register != null)
+        {
+            AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
     }
 }
