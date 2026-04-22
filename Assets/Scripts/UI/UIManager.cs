@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelUI;
     [SerializeField] private TMP_Text timeText;
 
-    [SerializeField] private GameObject endUI;
+    [SerializeField] public GameObject endUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

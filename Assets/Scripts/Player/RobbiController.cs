@@ -81,7 +81,7 @@ public class RobbiController : MonoBehaviour
         RaycastHit fl, fr, bl, br;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out fl, Mathf.Infinity, layerMask)) 
         {
-            Debug.Log("Ray Hit");
+            // Debug.Log("Ray Hit");
         }
 
         sphere.linearVelocity = transform.TransformDirection(localVel);

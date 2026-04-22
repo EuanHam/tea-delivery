@@ -26,10 +26,12 @@ public class CollisionControl : MonoBehaviour
 
                 bd.load = null;
                 bd.balance += 100;
+                bd.ordersCompleted += 1;
                 
                 StartCoroutine(startVictory());
             } else {
                 bd.balance = Mathf.Max(0, bd.balance - 10);
+                bd.npcsHit += 1;
                 PlayWilhelmScream();
                 EnableRagdoll(c);
                 Destroy(gameObject, Random.Range(5f, 10f));

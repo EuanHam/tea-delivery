@@ -4,6 +4,8 @@ public class BobaDriver : MonoBehaviour
 {
     public NewOrder load;
     public int balance;
+    public int ordersCompleted;
+    public int npcsHit;
 
     [SerializeField] private DyanmicMinimap minimap;
     [SerializeField] private GameObject BobaShop;
@@ -11,8 +13,10 @@ public class BobaDriver : MonoBehaviour
 
     void Start()
     {
-        balance = 0;
+        balance = 350;
         collisions = 0;
+        ordersCompleted = 4;
+        npcsHit = 5;
     }
 
     // Update is called once per frame

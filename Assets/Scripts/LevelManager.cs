@@ -5,14 +5,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private BobaDriver player;
 
     [SerializeField] private UIManager ui;
+
+    [SerializeField] private WinScreenManager winScreen;
     // Balance needed to win the level
     [SerializeField] private int[] balanceCondition = new int[] {500, 1000, 2000};
 
     //Time player has to complete the level
     [SerializeField] private float[] timeCondition = new float[] {120f, 120f, 120f};
+
     public float time;
     private string levelName;
     private int winBalance;
+    private bool levelEnded = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +27,7 @@ public class LevelManager : MonoBehaviour
             case "Level0Tutorial":
                 winBalance = balanceCondition[0];
                 time = timeCondition[0];
+
                 break;
             case "Level1":
                 winBalance = balanceCondition[1];
@@ -40,7 +45,8 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if (time <= 0) {
-            StartCoroutine(ReturnToLevelSelectionAfterDelay(5f));
+            levelEnded = true;
+            StartCoroutine(EndLevelSequence());
         } else if (!ui.instructionActive())
         {
             time -= Time.deltaTime;
@@ -51,5 +57,22 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySeconds);
         SceneManager.LoadScene("LevelSelection");
+    }
+
+    private System.Collections.IEnumerator EndLevelSequence()
+    {
+    yield return new WaitForSeconds(2f);
+    ui.endUI.SetActive(false);
+    int stars = CalculateStars(player.balance);
+    winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars);
+    }
+
+    private int CalculateStars(int balance)
+    {
+        float ratio = (float)balance / winBalance;
+        if (ratio >= 1.0f) return 3;
+        if (ratio >= 0.7f) return 2;
+        if (ratio >= 0.4f) return 1;
+        return 0;
     }
 }
