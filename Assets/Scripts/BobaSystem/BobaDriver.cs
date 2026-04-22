@@ -13,10 +13,10 @@ public class BobaDriver : MonoBehaviour
 
     void Start()
     {
-        balance = 350;
+        balance = 0;
         collisions = 0;
-        ordersCompleted = 4;
-        npcsHit = 5;
+        ordersCompleted = 0;
+        npcsHit = 0;
     }
 
     // Update is called once per frame

@@ -2325,9 +2325,9 @@ MonoBehaviour:
   winScreen: {fileID: 1207559091}
   balanceCondition: f4010000e8030000d0070000
   timeCondition:
-  - 5
-  - 5
-  - 5
+  - 120
+  - 120
+  - 120
   time: 0
 --- !u!4 &364705408
 Transform:
@@ -2344,6 +2344,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &370099070 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6238652011554088472, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+  m_PrefabInstance: {fileID: 735149941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &381640918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3291,6 +3296,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4843451942646259921, guid: 08345e5246a84a5409a887d4ed21eda0, type: 3}
   m_PrefabInstance: {fileID: 523616652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &563640317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7091168803139402797, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+  m_PrefabInstance: {fileID: 735149941}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &567037033
 PrefabInstance:
@@ -4496,7 +4506,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 203607615970965560, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: balance
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 203607615970965560, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: minimap
@@ -4575,9 +4585,21 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: midWheels
+      value: 
+      objectReference: {fileID: 563640317}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: rearWheel
+      value: 
+      objectReference: {fileID: 370099070}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: turnSpeed
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: frontWheels
+      value: 
+      objectReference: {fileID: 1579432582}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: acceleration
       value: 10
@@ -9466,6 +9488,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6307584042946867458, guid: c614e3e6b2541e14cbee48843de948eb, type: 3}
   m_PrefabInstance: {fileID: 1567391879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1579432582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1652985028052011558, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+  m_PrefabInstance: {fileID: 735149941}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1599226800
 PrefabInstance:
