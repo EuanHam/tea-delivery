@@ -7,6 +7,7 @@ public class NewBobaShop : MonoBehaviour
     [SerializeField] private NPCController npcManager;
     [SerializeField] private float nextOrder;
     [SerializeField] private float low, upper;
+    [SerializeField] private AudioClip pickup;
 
     void Start()
     {
@@ -38,13 +39,21 @@ public class NewBobaShop : MonoBehaviour
                     bd.load = orders.Dequeue();
                 }
 
-
+                playPickup();
                 bd.load.customer.GetComponent<npcAI>().stopAgent(true);
                 bd.load.customer.GetComponent<Animator>().SetTrigger("customer");
 
             }
         }
         
+    }
+
+    public void playPickup()
+    {
+        if (pickup != null)
+        {
+            AudioSource.PlayClipAtPoint(pickup, transform.position);
+        }
     }
 
 }

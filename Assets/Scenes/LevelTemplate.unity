@@ -1368,6 +1368,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
+      propertyPath: pickup
+      value: 
+      objectReference: {fileID: 8300000, guid: 4eb6fb59bec51d94fb934a2ff4a31832, type: 3}
+    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: npcManager
       value: 
       objectReference: {fileID: 1535302313}
@@ -4786,7 +4790,7 @@ PrefabInstance:
       objectReference: {fileID: 370099070}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: turnSpeed
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: frontWheels

@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         if (player.load == null)
         {
-            highlight.transform.position = bobaShop.transform.position + Vector3.up * 3f;
+            highlight.transform.position = bobaShop.transform.position + Vector3.up * 3.5f;
         } else
         {
             highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
