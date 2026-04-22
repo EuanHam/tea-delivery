@@ -21,9 +21,12 @@ public class PowerUpManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
+
+        Vector3 pos = Random.insideUnitSphere * 30f + player.position;
+        
         NavMeshHit hit;
 
-        if (time <= 0 && NavMesh.SamplePosition(player.position, out hit, 30f, NavMesh.AllAreas))
+        if (time <= 0 && NavMesh.SamplePosition(pos, out hit, 30f, NavMesh.AllAreas))
         {
             GameObject powerUp = Instantiate(prefab, hit.position, Quaternion.identity, transform);
             powerUp.GetComponent<PowerUpCollision>().powerUpManager = this;
