@@ -5,10 +5,9 @@ using UnityEngine.AI;
 public class RobbiController : MonoBehaviour
 {
     [SerializeField] private UIManager ui;
-    [SerializeField] private bool isDrifting;
-    [SerializeField] private Rigidbody rb, sphere;
+    [SerializeField] private Rigidbody rb;
 
-    [SerializeField] private Transform frontWheels, rearWheel;
+    [SerializeField] private Transform frontWheels, midWheels, rearWheel;
 
     [SerializeField] private float acceleration;
     [SerializeField] private float reverseAcceleration;
@@ -21,13 +20,12 @@ public class RobbiController : MonoBehaviour
     [SerializeField] private float reverseSpeed;
     [SerializeField] private float drag;
     [SerializeField] private float gravity;
-    [SerializeField] private LayerMask layerMask;
-    private float Drag = 0.95f;
+    [SerializeField] private float wheelRotationSpeed = 500f;
 
     void Start()
     {
         Application.targetFrameRate = 120;
-        sphere.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     void Update()
@@ -37,37 +35,35 @@ public class RobbiController : MonoBehaviour
 
         if (ui == null || !ui.instructionActive())
         {
-            if (Keyboard.current.wKey.isPressed) speed = 1f;
-            if (Keyboard.current.sKey.isPressed) speed = -1f;
-            if (Keyboard.current.aKey.isPressed) rotate = -1f;
-            if (Keyboard.current.dKey.isPressed) rotate = 1f;
+            rotate = Input.GetAxis("Horizontal");
+            speed = Input.GetAxis("Vertical");
         }
     }
 
     void LateUpdate()
     {
-        transform.position = sphere.transform.position - new Vector3(0, 0.1f, 0f);
+        transform.position = rb.transform.position - new Vector3(0, 0.1f, 0f);
     }
 
     void FixedUpdate()
     {
         // Forward Speed
-        if (speed > 0f && sphere.linearVelocity.magnitude < topSpeed)
-            sphere.AddForce(transform.forward * speed * acceleration, ForceMode.Acceleration);
+        if (speed > 0f && rb.linearVelocity.magnitude < topSpeed)
+            rb.AddForce(transform.forward * speed * acceleration, ForceMode.Acceleration);
 
         // Reverse Speed
-        else if (speed < 0f && sphere.linearVelocity.magnitude < reverseSpeed)
-            sphere.AddForce(transform.forward * speed * reverseAcceleration, ForceMode.Acceleration);
+        else if (speed < 0f && rb.linearVelocity.magnitude < reverseSpeed)
+            rb.AddForce(transform.forward * speed * reverseAcceleration, ForceMode.Acceleration);
 
         // Adding gravity
-        sphere.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+        rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
 
         // Adding Rotation
         Quaternion rotation = Quaternion.Euler(0f, rotate * turnSpeed * Time.fixedDeltaTime, 0f);
         transform.rotation *= rotation;
 
         // Adding Drag
-        Vector3 localVel = transform.InverseTransformDirection(sphere.linearVelocity);
+        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
 
         // Reduce sideways sliding
         localVel.x *= drag;
@@ -78,13 +74,25 @@ public class RobbiController : MonoBehaviour
             localVel.z *= 0.98f;
         }
 
-        RaycastHit fl, fr, bl, br;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out fl, Mathf.Infinity, layerMask)) 
-        {
-            // Debug.Log("Ray Hit");
-        }
 
-        sphere.linearVelocity = transform.TransformDirection(localVel);
+        rb.linearVelocity = transform.TransformDirection(localVel);
+
+
+        // Wheel Rotation
+        float direction = 0f;
+
+        // Forward = clockwise, Reverse = counterclockwise
+        if (speed > 0f)
+            direction = 1f; // clockwise
+        else if (speed < 0f)
+            direction = -1f;  // counterclockwise
+
+        float rotationAmount = direction * wheelRotationSpeed * Time.fixedDeltaTime;
+
+        // Rotate all wheels
+        frontWheels.Rotate(rotationAmount, 0f, 0f);
+        midWheels.Rotate(rotationAmount, 0f, 0f);
+        rearWheel.Rotate(rotationAmount, 0f, 0f);
     }
 
 }
