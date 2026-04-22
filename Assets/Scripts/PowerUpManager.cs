@@ -30,8 +30,6 @@ public class PowerUpManager : MonoBehaviour
             GameObject powerUp = Instantiate(prefab, hit.position + Vector3.up * 0.5f, Quaternion.Euler(90f, 0f, 0f), transform);
             powerUp.transform.localScale = Vector3.one * 2f;
             powerUp.GetComponent<PowerUpCollision>().powerUpManager = this;
-
-            Debug.Log("spawned at " + hit.position);
             time = Random.Range(lo, hi);
         } 
 

@@ -57,6 +57,8 @@ public class LevelManager : MonoBehaviour
         {
             time -= Time.deltaTime;
         }
+        float newY = highlight.transform.position.y + Mathf.Cos(Time.time * 2f) * 0.75f;
+        highlight.transform.position = new Vector3(highlight.transform.position.x, newY, highlight.transform.position.z);
     }
 
     private System.Collections.IEnumerator ReturnToLevelSelectionAfterDelay(float delaySeconds)
