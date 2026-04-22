@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     private int instructionIndex;
 
     [SerializeField] private LevelManager lm;
+    [SerializeField] private PowerUpManager powerUpManager;
 
     [SerializeField] private BobaDriver player;
     [SerializeField] private GameObject BobaShop;
@@ -31,8 +32,9 @@ public class UIManager : MonoBehaviour
     // UI for Level
     [SerializeField] private GameObject levelUI;
     [SerializeField] private TMP_Text timeText;
-
     [SerializeField] public GameObject endUI;
+    [SerializeField] private GameObject doubleMoneyUI;
+    [SerializeField] private GameObject invulnerableUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,7 +46,8 @@ public class UIManager : MonoBehaviour
         instructionUI.SetActive(true);
         levelUI.SetActive(true);
         endUI.SetActive(false);
-
+        doubleMoneyUI.SetActive(false);
+        invulnerableUI.SetActive(false);
 
 
         ShowInstruction(instructionIndex);
@@ -70,6 +73,26 @@ public class UIManager : MonoBehaviour
         {
             endUI.SetActive(true);
         }
+
+        if (powerUpManager != null)
+        {
+            if (powerUpManager.isInvunerable()) 
+            {
+                invulnerableUI.SetActive(true);    
+            }
+            else {
+                invulnerableUI.SetActive(false);
+            }
+
+            if (powerUpManager.isDoubleMoney()) 
+            {
+                doubleMoneyUI.SetActive(true);
+            }
+            else
+            {
+                invulnerableUI.SetActive(false);
+            }
+        }
     }
 
     private void ShowInstruction(int index)
@@ -83,5 +106,10 @@ public class UIManager : MonoBehaviour
     public bool instructionActive()
     {
         return instructionUI.activeSelf;
+    }
+
+    private void urgency(GameObject go)
+    {
+        
     }
 }

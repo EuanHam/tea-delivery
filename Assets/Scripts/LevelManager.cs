@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private BobaDriver player;
-
+    [SerializeField] private NewBobaShop bobaShop;
+    [SerializeField] private GameObject highlightPrefab;
     [SerializeField] private UIManager ui;
 
     [SerializeField] private WinScreenManager winScreen;
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
     private string levelName;
     private int winBalance;
     private bool levelEnded = false;
+    private GameObject highlight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,11 +41,21 @@ public class LevelManager : MonoBehaviour
                 time = timeCondition[0];
                 break;
         }
+
+        highlight = Instantiate(highlightPrefab, Vector3.zero, Quaternion.Euler(90f, 0f, 0f), transform);
+        highlight.transform.localScale = Vector3.one * 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player.load == null)
+        {
+            highlight.transform.position = bobaShop.transform.position + Vector3.up * 3f;
+        } else
+        {
+            highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
+        }
         if (time <= 0) {
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
@@ -51,6 +63,8 @@ public class LevelManager : MonoBehaviour
         {
             time -= Time.deltaTime;
         }
+        float newY = highlight.transform.position.y + Mathf.Cos(Time.time * 2f) * 0.75f;
+        highlight.transform.position = new Vector3(highlight.transform.position.x, newY, highlight.transform.position.z);
     }
 
     private System.Collections.IEnumerator ReturnToLevelSelectionAfterDelay(float delaySeconds)
@@ -61,10 +75,11 @@ public class LevelManager : MonoBehaviour
 
     private System.Collections.IEnumerator EndLevelSequence()
     {
-    yield return new WaitForSeconds(2f);
-    ui.endUI.SetActive(false);
-    int stars = CalculateStars(player.balance);
-    winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars);
+        yield return new WaitForSeconds(2f);
+        ui.endUI.SetActive(false);
+        int stars = CalculateStars(player.balance);
+        ui.endUI.SetActive(true);
+        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars);
     }
 
     private int CalculateStars(int balance)

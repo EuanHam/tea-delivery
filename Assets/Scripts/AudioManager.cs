@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private PowerUpManager powerUpManager;
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private GameObject player;
     [SerializeField] private AudioSource audioSource;

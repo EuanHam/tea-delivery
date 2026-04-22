@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class NPCController : MonoBehaviour
 {
+    public PowerUpManager powerUpManager;
     public GameObject prefab, center;
     public Material[] mat;
     public int size;
@@ -42,9 +43,10 @@ public class NPCController : MonoBehaviour
             {
                 npcs[i] = Instantiate(prefab, hit.position, Quaternion.identity, transform);
 
+                npcs[i].GetComponent<NPCCollision>().powerUpManager = powerUpManager;
 
                 npcAI nAI = npcs[i].GetComponent<npcAI>();
-
+                 
                 nAI.waypoints = poi;
 
                 anims[i] = npcs[i].GetComponent<Animator>();
