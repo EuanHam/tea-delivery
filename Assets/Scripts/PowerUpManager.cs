@@ -27,7 +27,8 @@ public class PowerUpManager : MonoBehaviour
 
         if (time <= 0 && NavMesh.SamplePosition(pos, out hit, 30f, NavMesh.AllAreas))
         {
-            GameObject powerUp = Instantiate(prefab, hit.position, Quaternion.identity, transform);
+            GameObject powerUp = Instantiate(prefab, hit.position + Vector3.up * 0.5f, Quaternion.Euler(90f, 0f, 0f), transform);
+            powerUp.transform.localScale = Vector3.one * 2f;
             powerUp.GetComponent<PowerUpCollision>().powerUpManager = this;
 
             Debug.Log("spawned at " + hit.position);

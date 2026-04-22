@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
         {
             if (powerUpManager.isInvunerable()) 
             {
-                invulnerableUI.SetActive(true);
+                invulnerableUI.SetActive(true);    
             }
             else {
                 invulnerableUI.SetActive(false);
@@ -92,9 +92,6 @@ public class UIManager : MonoBehaviour
                 invulnerableUI.SetActive(false);
             }
         }
-
-
-
     }
 
     private void ShowInstruction(int index)
@@ -108,5 +105,10 @@ public class UIManager : MonoBehaviour
     public bool instructionActive()
     {
         return instructionUI.activeSelf;
+    }
+
+    private void urgency(GameObject go)
+    {
+        
     }
 }

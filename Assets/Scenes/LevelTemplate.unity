@@ -1019,6 +1019,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
+      propertyPath: highlight
+      value: 
+      objectReference: {fileID: 1592038484381699448, guid: c8bcd3795c6667d47bb795f127ff09f8, type: 3}
+    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: npcManager
       value: 
       objectReference: {fileID: 1535302313}
@@ -1080,6 +1084,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7239891755714302044, guid: 014a17176a300724c9809207d7f20e97, type: 3}
   m_PrefabInstance: {fileID: 245025659}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &245025661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
+  m_PrefabInstance: {fileID: 245025659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245025660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3c3a8fbebabfa4598c08fe0c24806e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &251695166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1749,6 +1764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 735149943}
+  bobaShop: {fileID: 245025661}
+  highlightPrefab: {fileID: 1592038484381699448, guid: c8bcd3795c6667d47bb795f127ff09f8, type: 3}
   ui: {fileID: 748281878}
   balanceCondition: f4010000e8030000d0070000
   timeCondition:
@@ -2913,7 +2930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &593096965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4449,6 +4466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f06c007ec99a849993eb0f3085ca2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpManager: {fileID: 0}
   levelManager: {fileID: 364705407}
   player: {fileID: 735149944}
   audioSource: {fileID: 1032522914}
@@ -4954,7 +4972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1170927302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6677,7 +6695,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ba80dbbaef39f4ae690f584a5dbee857, type: 2}
   - {fileID: 2100000, guid: 09e61c1beda6649b284d09a5b945c4b0, type: 2}
   - {fileID: 2100000, guid: f5f5994c50f468a46bca2bc04c2fa350, type: 2}
-  size: 100
+  size: 200
   poi:
   - {fileID: 1567391881}
   - {fileID: 940423105}
