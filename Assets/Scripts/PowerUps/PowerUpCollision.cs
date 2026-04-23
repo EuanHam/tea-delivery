@@ -5,12 +5,21 @@ public class PowerUpCollision : MonoBehaviour
     public PowerUpManager powerUpManager;
     [SerializeField] private AudioClip moreTime, shield, coins, ding;
     private Vector3 startPos;
+    private float timer;
     void Start()
     {
         startPos = transform.position;
+        timer = 45.0f;
     }
     void Update()
     {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Debug.Log("power up despawned");
+            Destroy(gameObject);  
+        }
         float newY = startPos.y + Mathf.Cos(Time.time * 2f) * 0.5f;
         transform.position = new Vector3(startPos.x, newY, startPos.z);
         transform.Rotate(Vector3.forward * 90f * Time.deltaTime);
