@@ -15,7 +15,8 @@ public class VehicleCollision : MonoBehaviour
         {
             Debug.Log("vehicle collision!");
             if (!powerUpManager.isInvunerable() && !robbiController.stunned) {
-                bd.balance = 0;
+                bd.balance -= 100;
+                bd.balance = Mathf.Max(0, bd.balance);
                 bd.npcsHit += 1;
                 StartCoroutine(stunnedMovement());
             }

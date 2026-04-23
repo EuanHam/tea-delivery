@@ -9,7 +9,7 @@ public class PowerUpCollision : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        timer = 45.0f;
+        timer = 20.0f;
     }
     void Update()
     {
