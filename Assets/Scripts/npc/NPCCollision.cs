@@ -25,6 +25,7 @@ public class NPCCollision : MonoBehaviour
             bool invul = powerUpManager.isInvunerable();
 
             BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
+            VehicleCollision vc = c.gameObject.GetComponent<VehicleCollision>();
 
             if (bd.load != null && bd.load.customer == this.gameObject)
             {
@@ -37,7 +38,7 @@ public class NPCCollision : MonoBehaviour
                 bd.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
                 playCashRegister();
                 StartCoroutine(startVictory());
-            } else if (!invul) {
+            } else if (!invul && !vc.isStunned()) {
                 bd.balance = Mathf.Max(0, bd.balance - 10);
                 bd.npcsHit += 1;
                 PlayWilhelmScream();

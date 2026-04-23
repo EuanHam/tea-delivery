@@ -21,6 +21,7 @@ public class RobbiController : MonoBehaviour
     [SerializeField] private float drag;
     [SerializeField] private float gravity;
     [SerializeField] private float wheelRotationSpeed = 500f;
+    public bool stunned;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class RobbiController : MonoBehaviour
         speed = 0f;
         rotate = 0f;
 
-        if (ui == null || !ui.instructionActive())
+        if ((ui == null || !ui.instructionActive()) && !stunned)
         {
             rotate = Input.GetAxis("Horizontal");
             speed = Input.GetAxis("Vertical");
@@ -93,6 +94,16 @@ public class RobbiController : MonoBehaviour
         frontWheels.Rotate(rotationAmount, 0f, 0f);
         midWheels.Rotate(rotationAmount, 0f, 0f);
         rearWheel.Rotate(rotationAmount, 0f, 0f);
+    }
+
+    public void lockMovement()
+    {
+        stunned = true;
+    }
+
+    public void unlockMovement()
+    {
+        stunned = false;
     }
 
 }
