@@ -12,7 +12,7 @@ public class VehiclePath : MonoBehaviour
     [SerializeField] private float checkDistance = 1.5f;
     [SerializeField] private float sphereRadius = 0.3f;
     [SerializeField] private LayerMask obstacleMask; 
-
+    [SerializeField] private LayerMask crossingMask; 
 
     [SerializeField] private float heightOffset = 0.5f;
 
@@ -46,15 +46,24 @@ public class VehiclePath : MonoBehaviour
             obstacleMask,
             QueryTriggerInteraction.Ignore
         );
-
         if (blocked)
         {
-            if (!isBlocked)
+
+            if (Physics.Raycast(
+            hit.point,
+            Vector3.down,
+            out RaycastHit groundHit,
+            5f,
+            crossingMask,
+            QueryTriggerInteraction.Ignore))
             {
-                StartHonking();
-                isBlocked = true;
+                if (!isBlocked)
+                {
+                    StartHonking();
+                    isBlocked = true;
+                }
+                return;
             }
-            return;
         }
         else
         {

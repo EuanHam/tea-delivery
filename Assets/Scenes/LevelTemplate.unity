@@ -2093,7 +2093,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2015
+    m_Bits: 4063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 2d2eec202b9a54cbca7a6fee94cd6a86, type: 2}
   m_TargetDisplay: 0
@@ -2895,10 +2895,13 @@ MonoBehaviour:
   speed: 10
   loop: 1
   checkDistance: 4
-  sphereRadius: 1
+  sphereRadius: 0.5
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1536
+  crossingMask:
+    serializedVersion: 2
+    m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 408815054}
   honk: {fileID: 8300000, guid: 740160a9296d2644eb96f4b1d8645907, type: 3}
@@ -6419,10 +6422,13 @@ MonoBehaviour:
   speed: 10
   loop: 1
   checkDistance: 4
-  sphereRadius: 1
+  sphereRadius: 0.5
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1536
+  crossingMask:
+    serializedVersion: 2
+    m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 851022685}
   honk: {fileID: 8300000, guid: 740160a9296d2644eb96f4b1d8645907, type: 3}
@@ -8960,7 +8966,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 2432
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -9909,7 +9915,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
