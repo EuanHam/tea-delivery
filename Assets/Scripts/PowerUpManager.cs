@@ -6,14 +6,20 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private float lo;
     [SerializeField] private float hi;
+    [SerializeField] private float max;
     [SerializeField] private Transform player;
     private float time;
     public float invulnerableTimer;
     public float doubleMoneyTimer;
+    NavMeshQueryFilter filter;
 
     void Start()
     {
         time = Random.Range(lo, hi);
+
+            filter = new NavMeshQueryFilter();
+            filter.agentTypeID = NavMesh.GetSettingsByIndex(1).agentTypeID;
+            filter.areaMask = NavMesh.AllAreas;
     }
 
     // Update is called once per frame
@@ -25,7 +31,7 @@ public class PowerUpManager : MonoBehaviour
         
         NavMeshHit hit;
 
-        if (time <= 0 && NavMesh.SamplePosition(pos, out hit, 30f, NavMesh.AllAreas))
+        if (this.transform.childCount < max && time <= 0 && NavMesh.SamplePosition(pos, out hit, 30f, filter))
         {
             GameObject powerUp = Instantiate(prefab, hit.position + Vector3.up * 0.5f, Quaternion.Euler(90f, 0f, 0f), transform);
             powerUp.transform.localScale = Vector3.one * 2f;

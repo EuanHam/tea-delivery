@@ -41,8 +41,8 @@ public class PowerUpCollision : MonoBehaviour
                     return;
 
             }
-
-            Destroy(gameObject);
+            Debug.Log("destoryed power up");
+            Destroy(gameObject);    
         }
     }
 
