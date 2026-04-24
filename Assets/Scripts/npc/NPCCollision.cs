@@ -23,7 +23,6 @@ public class NPCCollision : MonoBehaviour
         {
 
             bool invul = powerUpManager.isInvunerable();
-
             BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
             VehicleCollision vc = c.gameObject.GetComponent<VehicleCollision>();
 
