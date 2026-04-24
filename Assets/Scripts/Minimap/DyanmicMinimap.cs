@@ -25,6 +25,8 @@ public class DyanmicMinimap : MonoBehaviour
 
     void Awake()
     {
+        lineRenderer.material.color = Color.cyan;
+
         lineRenderer.useWorldSpace = true;
 
         lineRenderer.startWidth = lineRenderer.endWidth = lineWidth;
