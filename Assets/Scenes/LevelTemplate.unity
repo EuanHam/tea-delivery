@@ -12989,7 +12989,7 @@ MonoBehaviour:
   prefab: {fileID: 953330064416729997, guid: 8279a2cfb099abf43af4f2c1bf3874d6, type: 3}
   lo: 1
   hi: 5
-  max: 1
+  max: 5
   player: {fileID: 735149942}
   invulnerableTimer: 0
   doubleMoneyTimer: 0
@@ -18195,6 +18195,7 @@ MonoBehaviour:
   stunDuration: 3
   coin_drop: {fileID: 8300000, guid: 1e6cbe5501c991b4e948774f7c322a95, type: 3}
   dizzy_sound: {fileID: 8300000, guid: 44b805cfe81702e43a7bff49d7c19efb, type: 3}
+  block: {fileID: 8300000, guid: 41be004cc3d56374fae7298f0f2d1db6, type: 3}
 --- !u!1 &1431747845
 GameObject:
   m_ObjectHideFlags: 0
@@ -24728,7 +24729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: lineWidth
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1695379335272007658, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: lineRenderer
@@ -30311,6 +30312,8 @@ SceneRoots:
   - {fileID: 1822231713}
   - {fileID: 735149941}
   - {fileID: 381640918}
+  - {fileID: 763226176}
+  - {fileID: 2036645607}
   - {fileID: 1810857357}
   - {fileID: 245025659}
   - {fileID: 1647494715}
@@ -30474,5 +30477,3 @@ SceneRoots:
   - {fileID: 1421549603}
   - {fileID: 1986691660}
   - {fileID: 2038862159}
-  - {fileID: 763226176}
-  - {fileID: 2036645607}

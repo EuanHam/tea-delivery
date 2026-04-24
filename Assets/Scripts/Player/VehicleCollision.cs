@@ -8,7 +8,7 @@ public class VehicleCollision : MonoBehaviour
     [SerializeField] private PowerUpManager powerUpManager;
     [SerializeField] private BobaDriver bd;
     [SerializeField] private float stunDuration;
-    [SerializeField] private AudioClip coin_drop, dizzy_sound;
+    [SerializeField] private AudioClip coin_drop, dizzy_sound, block;
 
     private void OnCollisionEnter(Collision c)
     {
@@ -26,6 +26,7 @@ public class VehicleCollision : MonoBehaviour
                 PlayDizzy();
                 StartCoroutine(stunnedMovement());
             }
+            if (powerUpManager.isInvunerable())  PlayBlock();
         }
     }
 
@@ -49,11 +50,18 @@ public class VehicleCollision : MonoBehaviour
         }
     }
 
-        public void PlayDizzy()
+    public void PlayDizzy()
     {
         if (coin_drop != null)
         {
             AudioSource.PlayClipAtPoint(dizzy_sound, transform.position);
+        }
+    }
+        public void PlayBlock()
+    {
+        if (block != null)
+        {
+            AudioSource.PlayClipAtPoint(block, transform.position);
         }
     }
 }

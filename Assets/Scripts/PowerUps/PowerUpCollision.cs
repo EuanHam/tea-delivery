@@ -3,7 +3,7 @@ using UnityEngine;
 public class PowerUpCollision : MonoBehaviour
 {
     public PowerUpManager powerUpManager;
-    [SerializeField] private AudioClip moreTime, shield, coins, ding;
+    [SerializeField] private AudioClip moreTime, shield, coins;
     private Vector3 startPos;
     private float timer;
     void Start()
