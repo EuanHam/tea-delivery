@@ -22,7 +22,6 @@ public class VehicleCollision : MonoBehaviour
                 }
                 bd.balance -= 100;
                 bd.balance = Mathf.Max(0, bd.balance);
-                bd.npcsHit += 1;
                 PlayDizzy();
                 StartCoroutine(stunnedMovement());
             }
@@ -33,6 +32,7 @@ public class VehicleCollision : MonoBehaviour
     private IEnumerator stunnedMovement()
     {
         robbiController.lockMovement();
+        
         yield return new WaitForSeconds(stunDuration);
         robbiController.unlockMovement();
     }

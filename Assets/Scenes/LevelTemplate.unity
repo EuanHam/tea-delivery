@@ -24750,7 +24750,7 @@ PrefabInstance:
     - target: {fileID: 4372489587404814206, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7a1c8f4825307124e98d556648f0bfbc, type: 2}
+      objectReference: {fileID: 2100000, guid: 636aa6d0cece045438f46a5537e606a0, type: 2}
     - target: {fileID: 4372489587404814206, guid: cf0fb2ea2d3eb504e9569f0523478217, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 1
