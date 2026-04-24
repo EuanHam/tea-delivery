@@ -3462,7 +3462,7 @@ PrefabInstance:
       objectReference: {fileID: 1535302313}
     - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.47
+      value: -7.55
       objectReference: {fileID: 0}
     - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20582,75 +20582,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968662d700c58dc4e9efa1924603b02d, type: 3}
---- !u!1001 &1388277012
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: pickup
-      value: 
-      objectReference: {fileID: 8300000, guid: 4eb6fb59bec51d94fb934a2ff4a31832, type: 3}
-    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: npcManager
-      value: 
-      objectReference: {fileID: 1535302313}
-    - target: {fileID: 4203198313498268249, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: npcController
-      value: 
-      objectReference: {fileID: 1535302313}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.2501163
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568907622965196484, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239891755714302044, guid: 014a17176a300724c9809207d7f20e97, type: 3}
-      propertyPath: m_Name
-      value: BobaShop (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 014a17176a300724c9809207d7f20e97, type: 3}
 --- !u!1001 &1395695346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33994,7 +33925,6 @@ SceneRoots:
   - {fileID: 120610788}
   - {fileID: 375739762}
   - {fileID: 1611499846}
-  - {fileID: 1388277012}
   - {fileID: 970867102}
   - {fileID: 1883893214}
   - {fileID: 2095242782}

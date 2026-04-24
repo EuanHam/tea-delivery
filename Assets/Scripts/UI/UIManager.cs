@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                invulnerableUI.SetActive(false);
+                doubleMoneyUI.SetActive(false);
             }
         }
     }
