@@ -7,7 +7,7 @@ public class NPCCollision : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
     [SerializeField] private Collider rootCollider;
-    [SerializeField] private AudioClip wilhelmScream, yay, cash_register, block;
+    [SerializeField] private AudioClip wilhelmScream, yay, cash_register;
 
     private Rigidbody[] rbs;
 
@@ -23,6 +23,7 @@ public class NPCCollision : MonoBehaviour
         {
 
             bool invul = powerUpManager.isInvunerable();
+
             BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
             VehicleCollision vc = c.gameObject.GetComponent<VehicleCollision>();
 
@@ -43,9 +44,6 @@ public class NPCCollision : MonoBehaviour
                 PlayWilhelmScream();
                 EnableRagdoll(c);
                 Destroy(gameObject, Random.Range(5f, 10f));
-            } else if(invul)
-            {
-                PlayBlock();
             }
         }
         
@@ -107,13 +105,4 @@ public class NPCCollision : MonoBehaviour
             AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
     }
-
-    public void PlayBlock()
-    {
-        if (block != null)
-        {
-            AudioSource.PlayClipAtPoint(block, transform.position);
-        }
-    }
-
 }
