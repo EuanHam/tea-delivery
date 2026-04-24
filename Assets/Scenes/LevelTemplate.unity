@@ -21121,6 +21121,8 @@ MonoBehaviour:
   powerUpManager: {fileID: 1088137590}
   bd: {fileID: 735149943}
   stunDuration: 3
+  coin_drop: {fileID: 8300000, guid: 1e6cbe5501c991b4e948774f7c322a95, type: 3}
+  dizzy_sound: {fileID: 8300000, guid: 44b805cfe81702e43a7bff49d7c19efb, type: 3}
 --- !u!1 &1428804826
 GameObject:
   m_ObjectHideFlags: 0
