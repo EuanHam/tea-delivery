@@ -15,6 +15,7 @@ public class VehicleCollision : MonoBehaviour
         if (c.gameObject.tag == "Vehicle") 
         {
             if (!powerUpManager.isInvunerable() && !robbiController.stunned) {
+                bd.vehicleCollisions += 1;
                 if (bd.balance > 0)
                 {
                     PlayCoinDrop();
