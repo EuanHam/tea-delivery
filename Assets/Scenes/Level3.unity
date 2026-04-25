@@ -197,7 +197,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.9563065, y: 5.3144393, z: 2.8369029}
+  m_Size: {x: 1, y: 5.3144393, z: 1}
   m_Center: {x: 0.04170281, y: 2.647283, z: 0.09605588}
 --- !u!1 &17735433 stripped
 GameObject:
@@ -29940,7 +29940,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.9563065, y: 5.3144393, z: 2.8369029}
+  m_Size: {x: 1, y: 5.3144393, z: 1}
   m_Center: {x: 0.041703764, y: 2.6472833, z: 0.09605493}
 --- !u!1001 &1723685897
 PrefabInstance:
@@ -37020,7 +37020,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.956306, y: 5.3144393, z: 2.8369029}
+  m_Size: {x: 1, y: 5.3144393, z: 1}
   m_Center: {x: 0.04170376, y: 2.6472833, z: 0.096056834}
 --- !u!1001 &1973714982
 PrefabInstance:
@@ -38955,7 +38955,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.956306, y: 5.3144393, z: 2.8369029}
+  m_Size: {x: 1, y: 5.3144393, z: 1}
   m_Center: {x: 0.041702807, y: 2.6472833, z: 0.09605493}
 --- !u!1001 &2095242782
 PrefabInstance:
