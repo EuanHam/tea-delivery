@@ -7,6 +7,7 @@ using System.Collections;
 public class WinScreenManager : MonoBehaviour
 {
     [SerializeField] private GameObject winScreenPanel;
+    [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI numOrdersText;
     [SerializeField] private TextMeshProUGUI ordersBalanceText;
     [SerializeField] private TextMeshProUGUI numNPCsHitText;
@@ -42,7 +43,7 @@ public class WinScreenManager : MonoBehaviour
         winScreenPanel.SetActive(false);
     }
 
-    public void Show(int finalBalance, int targetBalance, int numOrders, int numNPCsHit, int starCount)
+    public void Show(int finalBalance, int targetBalance, int numOrders, int numNPCsHit, int starCount, int highScore)
     {
         winScreenPanel.SetActive(true);
         lowResOverlay.SetActive(false);
@@ -54,6 +55,7 @@ public class WinScreenManager : MonoBehaviour
         star2BalanceText.text = $"${(int)(targetBalance * 0.7)}";
         star3BalanceText.text = $"${targetBalance}";
 
+        highScoreText.gameObject.SetActive(false);
         numOrdersText.gameObject.SetActive(false);
         ordersBalanceText.gameObject.SetActive(false);
         numNPCsHitText.gameObject.SetActive(false);
@@ -67,10 +69,10 @@ public class WinScreenManager : MonoBehaviour
             stars[i].sprite = starEmpty;
         }
 
-        StartCoroutine(AnimateSequence(finalBalance, numOrders, numNPCsHit, starCount));
+        StartCoroutine(AnimateSequence(finalBalance, numOrders, numNPCsHit, starCount, highScore));
     }
 
-    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int numNPCsHit, int starCount)
+    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int numNPCsHit, int starCount, int highScore)
     {
         musicSource.PlayOneShot(victorySound);
         yield return new WaitForSecondsRealtime(0.8f);
@@ -82,6 +84,8 @@ public class WinScreenManager : MonoBehaviour
         }
 
         ordersLabelText.gameObject.SetActive(true);
+        highScoreText.gameObject.SetActive(true);
+        highScoreText.text = $"High Score: ${highScore}";
         numOrdersText.gameObject.SetActive(true);
         ordersBalanceText.gameObject.SetActive(true);
         numOrdersText.text = $"{numOrders}x";
@@ -147,6 +151,7 @@ public class WinScreenManager : MonoBehaviour
 
     public void OnRetryButton()
     {
+        Debug.Log("Retry clicked");
         lowResOverlay.SetActive(true);
         StartCoroutine(ExitTransition(SceneManager.GetActiveScene().name));
     }

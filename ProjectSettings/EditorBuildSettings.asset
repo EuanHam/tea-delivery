@@ -11,15 +11,30 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UIScene.unity
     guid: 22c79a03755ab4e0ea32a922e10c62f7
-  - enabled: 1
-    path: Assets/Scenes/LevelSelection.unity
+  - enabled: 0
+    path: Assets/Scenes/Archive/LevelSelection_OLD.unity
     guid: 90335d83fe80a459abb777d2d32e0d18
-  - enabled: 1
-    path: Assets/Scenes/Level0Tutorial.unity
+  - enabled: 0
+    path: Assets/Scenes/Archive/Level0Tutorial_OLD.unity
     guid: 81a5b5abb2bd646e8a84579431092722
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 0bb78f9886bfa4d708e956274dbebdfc
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: 46363a4b435dce14b898c70c5242c6ab
+  - enabled: 1
+    path: Assets/Scenes/Level0Tutorial.unity
+    guid: 5214ad67b03a1234cafd0a28493b70b3
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 5f10fc0be538a2a4a8812d4f2b78507a
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 5e041b54af04a454bb95660b9f9566fb
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 6c359e8dcb61832478b96d4f73edff7e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

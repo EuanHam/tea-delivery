@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class LevelSelectionController : MonoBehaviour
 {
@@ -11,9 +13,21 @@ public class LevelSelectionController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource backgroundMusicSource;
+
+    [SerializeField] private TextMeshProUGUI highScoreText0;
+    [SerializeField] private TextMeshProUGUI highScoreText1;
+    [SerializeField] private TextMeshProUGUI highScoreText2;
+    [SerializeField] private TextMeshProUGUI highScoreText3;
+
     
     void Start()
     {
+        // Load high scores for each level and update UI
+        highScoreText0.text = $"High Score: ${PlayerPrefs.GetInt("Level0Tutorial_HighScore", 0)}";
+        highScoreText1.text = $"High Score: ${PlayerPrefs.GetInt("Level1_HighScore", 0)}";
+        highScoreText2.text = $"High Score: ${PlayerPrefs.GetInt("Level2_HighScore", 0)}";
+        highScoreText3.text = $"High Score: ${PlayerPrefs.GetInt("Level3_HighScore", 0)}";
+
         if (backButton != null)
         {
             backButton.onClick.AddListener(() => PlaySoundAndGoToTitleScreen());

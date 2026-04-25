@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviour
         {
             highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
         }
-        if (time <= 0) {
+        if (time <= 0 && !levelEnded) {
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
         } else if (!ui.instructionActive())
@@ -78,8 +78,11 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         ui.endUI.SetActive(false);
         int stars = CalculateStars(player.balance);
+        SaveHighScore(levelName, player.balance);
         ui.endUI.SetActive(true);
-        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars);
+        int highScore = GetHighScore(levelName);
+
+        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars, highScore);
     }
 
     private int CalculateStars(int balance)
@@ -90,4 +93,24 @@ public class LevelManager : MonoBehaviour
         if (ratio >= 0.4f) return 1;
         return 0;
     }
+
+    void SaveHighScore(string levelName, int score)
+    {
+        string key = "HighScore_" + levelName;
+        int currHigh = PlayerPrefs.GetInt(key, 0);
+        if (score > currHigh)
+        {
+            PlayerPrefs.SetInt(key, score);
+            PlayerPrefs.Save();
+            Debug.Log("New high score for " + levelName + ": " + score);
+        }
+    }
+
+    int GetHighScore(string levelName)
+    {
+        string key = "HighScore_" + levelName;
+        return PlayerPrefs.GetInt(key, 0);
+    }
+
+
 }
