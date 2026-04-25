@@ -17,7 +17,7 @@ public class VehiclePath : MonoBehaviour
     [SerializeField] private float heightOffset = 0.5f;
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip honk;
+    // [SerializeField] private AudioClip honk;
 
     private bool isBlocked;
 
@@ -59,7 +59,7 @@ public class VehiclePath : MonoBehaviour
             {
                 if (!isBlocked)
                 {
-                    StartHonking();
+                    // StartHonking();
                     isBlocked = true;
                 }
                 return;
@@ -69,7 +69,7 @@ public class VehiclePath : MonoBehaviour
         {
             if (isBlocked)
             {
-                StopHonking();
+                // StopHonking();
                 isBlocked = false;
             }
         }
@@ -93,21 +93,21 @@ public class VehiclePath : MonoBehaviour
             transform.rotation = Quaternion.LookRotation((Vector3)newTangent, Vector3.up);
     }
 
-    void StartHonking()
-    {
-        if (audioSource != null && honk != null)
-        {
-            audioSource.clip = honk;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
-    }
+    // void StartHonking()
+    // {
+    //     if (audioSource != null && honk != null)
+    //     {
+    //         audioSource.clip = honk;
+    //         audioSource.loop = true;
+    //         audioSource.Play();
+    //     }
+    // }
 
-    void StopHonking()
-    {
-        if (audioSource != null && audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
-    }
+    // void StopHonking()
+    // {
+    //     if (audioSource != null && audioSource.isPlaying)
+    //     {
+    //         audioSource.Stop();
+    //     }
+    // }
 }

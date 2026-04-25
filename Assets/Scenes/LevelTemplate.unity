@@ -663,7 +663,6 @@ MonoBehaviour:
     m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 31540340}
-  honk: {fileID: 8300000, guid: 102df720545df574a84fb1f03b36e0d2, type: 3}
 --- !u!65 &31540339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11652,6 +11651,10 @@ PrefabInstance:
       value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honk
+      value: 
+      objectReference: {fileID: 8300000, guid: a3a46671fa98547b2a8a2c7d2b280809, type: 3}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: gravity
       value: 1
       objectReference: {fileID: 0}
@@ -11672,13 +11675,37 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: 9786e0109745c42a6b435f86d6648fa4, type: 3}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkSource
+      value: 
+      objectReference: {fileID: 735149950}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: frontWheels
       value: 
       objectReference: {fileID: 1579432582}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkRelease
+      value: 
+      objectReference: {fileID: 8300000, guid: 18011856c62304463b2e48208310fb24, type: 3}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkSustain
+      value: 
+      objectReference: {fileID: 8300000, guid: 869344fd2e16d4ff799699200ae42fb3, type: 3}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: acceleration
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkLoopSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: honkAttackSource
+      value: 
+      objectReference: {fileID: 735149950}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: layerMask.m_Bits
       value: 4294967295
@@ -11694,6 +11721,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 679125583900871206, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1425780708}
+    - targetCorrespondingSourceObject: {fileID: 3338362542620698911, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 735149950}
   m_SourcePrefab: {fileID: 100100000, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
 --- !u!4 &735149942 stripped
 Transform:
@@ -11732,6 +11762,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00138894a9a694019bdc6c7c7eaeff17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &735149950
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735149945}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &748281877
 GameObject:
   m_ObjectHideFlags: 0
@@ -12031,7 +12158,6 @@ MonoBehaviour:
     m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 762326015}
-  honk: {fileID: 8300000, guid: 102df720545df574a84fb1f03b36e0d2, type: 3}
 --- !u!65 &762326014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21370,7 +21496,6 @@ MonoBehaviour:
     m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 1308838007}
-  honk: {fileID: 8300000, guid: 102df720545df574a84fb1f03b36e0d2, type: 3}
 --- !u!65 &1308838006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26990,7 +27115,6 @@ MonoBehaviour:
     m_Bits: 2048
   heightOffset: 1
   audioSource: {fileID: 1587361772}
-  honk: {fileID: 8300000, guid: 102df720545df574a84fb1f03b36e0d2, type: 3}
 --- !u!65 &1587361771
 BoxCollider:
   m_ObjectHideFlags: 0
