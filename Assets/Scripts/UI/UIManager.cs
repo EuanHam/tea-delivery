@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using TMPro;
@@ -23,7 +24,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text balanceText;
     
     // UI for Delivery Info
-    [SerializeField] private GameObject deliveryUI;
+    [SerializeField] private Slider deliveryUI;
+    [SerializeField] private TMP_Text deliveryText;
 
     // UI for Instructions
     [SerializeField] private GameObject instructionUI;
@@ -42,7 +44,7 @@ public class UIManager : MonoBehaviour
         instructionIndex = 0;
 
         balanceUI.SetActive(true);
-        deliveryUI.SetActive(false);
+        deliveryUI.gameObject.SetActive(false);
         instructionUI.SetActive(true);
         levelUI.SetActive(true);
         endUI.SetActive(false);
@@ -62,12 +64,17 @@ public class UIManager : MonoBehaviour
             ShowInstruction(++instructionIndex);
         }
 
-        if (player.load != null) deliveryUI.SetActive(true);
-        else deliveryUI.SetActive(false);
+        if (player.load != null) {
+            deliveryUI.gameObject.SetActive(true);
+            deliveryText.text = TimeSpan.FromSeconds(player.load.ttl).ToString(@"mm\:ss");
+            deliveryUI.value = player.load.ttl / player.load.duration;
+        }
+        
+        else deliveryUI.gameObject.SetActive(false);
         
         balanceText.text = "$" + player.balance.ToString();
 
-        timeText.text = TimeSpan.FromSeconds(lm.time).ToString(@"mm\:ss");;
+        timeText.text = TimeSpan.FromSeconds(lm.time).ToString(@"mm\:ss");
 
         if (lm.time <=0)
         {
@@ -108,8 +115,4 @@ public class UIManager : MonoBehaviour
         return instructionUI.activeSelf;
     }
 
-    private void urgency(GameObject go)
-    {
-        
-    }
 }
