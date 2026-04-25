@@ -77,10 +77,11 @@ public class WinScreenManager : MonoBehaviour
             stars[i].sprite = starEmpty;
         }
 
-        StartCoroutine(AnimateSequence(finalBalance, numOrders, specialOrdersCompleted, numNPCsHit, vehicleCollisions, starCount, highScore));
+        bool isTutorial = SceneManager.GetActiveScene().name == "Level0Tutorial";
+        StartCoroutine(AnimateSequence(finalBalance, numOrders, specialOrdersCompleted, numNPCsHit, vehicleCollisions, starCount, highScore, isTutorial));
     }
 
-    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int specialOrdersCompleted, int numNPCsHit, int vehicleCollisions, int starCount, int highScore)
+    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int specialOrdersCompleted, int numNPCsHit, int vehicleCollisions, int starCount, int highScore, bool isTutorial)
     {
         musicSource.PlayOneShot(victorySound);
         yield return new WaitForSecondsRealtime(0.8f);
@@ -97,8 +98,19 @@ public class WinScreenManager : MonoBehaviour
 
         numOrdersText.gameObject.SetActive(true);
         ordersBalanceText.gameObject.SetActive(true);
-        numOrdersText.text = $"{numOrders}x";
-        ordersBalanceText.text = $"${numOrders * 100}";
+        
+        // For tutorial, show 1 order if any were completed
+        if (isTutorial)
+        {
+            int tutorialOrders = numOrders > 0 ? 1 : 0;
+            numOrdersText.text = $"{tutorialOrders}x";
+            ordersBalanceText.text = $"${tutorialOrders * 100}";
+        }
+        else
+        {
+            numOrdersText.text = $"{numOrders}x";
+            ordersBalanceText.text = $"${numOrders * 100}";
+        }
 
         numSpecialOrdersText.gameObject.SetActive(true);
         numSpecialOrdersText.text = $"{specialOrdersCompleted}x";
@@ -115,11 +127,15 @@ public class WinScreenManager : MonoBehaviour
             stars[1].sprite = starFilled;
         }
 
-        npcsLabelText.gameObject.SetActive(true);
-        numNPCsHitText.gameObject.SetActive(true);
-        npcsHitBalanceText.gameObject.SetActive(true);
-        numNPCsHitText.text = $"{numNPCsHit}x";
-        npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
+        // For tutorial, hide NPC hit info
+        if (!isTutorial)
+        {
+            npcsLabelText.gameObject.SetActive(true);
+            numNPCsHitText.gameObject.SetActive(true);
+            npcsHitBalanceText.gameObject.SetActive(true);
+            numNPCsHitText.text = $"{numNPCsHit}x";
+            npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
+        }
 
         numberOfVehicleCollisionsText.gameObject.SetActive(true);
         numberOfVehicleCollisionsText.text = $"{vehicleCollisions}x";

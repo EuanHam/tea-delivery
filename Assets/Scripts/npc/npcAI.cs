@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class npcAI : MonoBehaviour
@@ -27,6 +28,13 @@ public class npcAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // npcs don't move in tutorial
+        if (SceneManager.GetActiveScene().name == "Level0Tutorial")
+        {
+            nma.isStopped = true;
+            return;
+        }
+
         if (anim != null && nma != null && nma.enabled && nma.isOnNavMesh)
             anim.SetFloat("vely", nma.velocity.magnitude / nma.speed);
         

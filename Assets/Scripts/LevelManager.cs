@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
         switch (levelName)
         {
             case "Level0Tutorial":
-                winBalance = balanceCondition[0];
+                winBalance = 1;
                 time = timeCondition[0];
 
                 break;
@@ -56,7 +56,12 @@ public class LevelManager : MonoBehaviour
         {
             highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
         }
-        if (time <= 0 && !levelEnded) {
+        
+        // check wincon
+        if (player.balance >= winBalance && !levelEnded) {
+            levelEnded = true;
+            StartCoroutine(EndLevelSequence());
+        } else if (time <= 0 && !levelEnded) {
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
         } else if (!ui.instructionActive())
@@ -75,6 +80,7 @@ public class LevelManager : MonoBehaviour
 
     private System.Collections.IEnumerator EndLevelSequence()
     {
+        yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(2f);
         ui.endUI.SetActive(false);
         int stars = CalculateStars(player.balance);
