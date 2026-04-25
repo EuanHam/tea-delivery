@@ -17041,7 +17041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &920248425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22909,7 +22909,7 @@ MonoBehaviour:
   numberOfVehicleCollisionsText: {fileID: 1306740429}
   vehicleCollisionsText: {fileID: 288367976}
   numNPCsHitText: {fileID: 291418179}
-  npcsHitBalanceText: {fileID: 2074192178}
+  npcsHitBalanceText: {fileID: 1732273013}
   finalBalanceText: {fileID: 766590938}
   resultText: {fileID: 1914038053}
   star1BalanceText: {fileID: 722889013}

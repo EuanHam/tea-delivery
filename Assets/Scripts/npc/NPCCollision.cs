@@ -42,7 +42,7 @@ public class NPCCollision : MonoBehaviour
                 playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul && !vc.isStunned()) {
-                bd.balance = Mathf.Max(0, bd.balance - 10);
+                bd.balance = bd.balance - 10;
                 bd.npcsHit += 1;
                 PlayWilhelmScream();
                 EnableRagdoll(c);

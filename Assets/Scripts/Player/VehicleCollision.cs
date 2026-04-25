@@ -21,7 +21,6 @@ public class VehicleCollision : MonoBehaviour
                     PlayCoinDrop();
                 }
                 bd.balance -= 100;
-                bd.balance = Mathf.Max(0, bd.balance);
             
                 StartCoroutine(stunnedMovement());
             } else if (powerUpManager.isInvunerable())
