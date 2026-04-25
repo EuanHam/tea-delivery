@@ -23699,6 +23699,9 @@ MonoBehaviour:
   powerUpManager: {fileID: 1088137590}
   bd: {fileID: 735149943}
   stunDuration: 3
+  coin_drop: {fileID: 8300000, guid: 1e6cbe5501c991b4e948774f7c322a95, type: 3}
+  dizzy_sound: {fileID: 8300000, guid: 44b805cfe81702e43a7bff49d7c19efb, type: 3}
+  block: {fileID: 8300000, guid: 41be004cc3d56374fae7298f0f2d1db6, type: 3}
 --- !u!1 &1444294544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 968662d700c58dc4e9efa1924603b02d, type: 3}

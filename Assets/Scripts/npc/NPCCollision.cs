@@ -8,7 +8,6 @@ public class NPCCollision : MonoBehaviour
     [SerializeField] private UnityEngine.AI.NavMeshAgent nma;
     [SerializeField] private Collider rootCollider;
     [SerializeField] private AudioClip wilhelmScream, yay, cash_register;
-
     private Rigidbody[] rbs;
 
     void Awake()
@@ -105,4 +104,5 @@ public class NPCCollision : MonoBehaviour
             AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
     }
+
 }

@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 1427564092133216371, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -1393,7 +1397,6 @@ MonoBehaviour:
   wilhelmScream: {fileID: 8300000, guid: aa2bf5e355601480f8eb60fed5c6e4c8, type: 3}
   yay: {fileID: 8300000, guid: a71fdfad345a9d64fa3c5ef63c3f30bc, type: 3}
   cash_register: {fileID: 8300000, guid: 0fb6a1540cfb4484b9749152830cd1b6, type: 3}
-  block: {fileID: 8300000, guid: 41be004cc3d56374fae7298f0f2d1db6, type: 3}
 --- !u!1 &8383634501908429319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543848922086812978, guid: 6108ab387f8733f4b8c81b9f869743a2, type: 3}

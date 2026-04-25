@@ -23,10 +23,6 @@ public class RobbiController : MonoBehaviour
     [SerializeField] private float wheelRotationSpeed = 500f;
     public bool stunned;
 
-    [Header("Honk")]
-    [SerializeField] private AudioSource honkSource;
-    [SerializeField] private AudioClip honk;
-    bool isHonking;
 
     void Start()
     {
@@ -44,8 +40,6 @@ public class RobbiController : MonoBehaviour
             rotate = Input.GetAxis("Horizontal");
             speed = Input.GetAxis("Vertical");
         }
-
-        Honk();
     }
 
 
@@ -114,11 +108,5 @@ public class RobbiController : MonoBehaviour
         stunned = false;
     }
 
-    void Honk()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !(ui.instructionActive())) {
-            honkSource.PlayOneShot(honk);
-        }
-    }
 
 }
