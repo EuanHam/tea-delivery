@@ -64,10 +64,14 @@ public class DyanmicMinimap : MonoBehaviour
         }
 
         lineRenderer.positionCount = path.corners.Length;
-        lineRenderer.SetPosition(0, target.transform.position);
 
+        lineRenderer.SetPosition(0, target.transform.position);
+        Vector3 pos = target.transform.position;
+        pos.y = 5f;
+        lineRenderer.SetPosition(0, pos);
         for (int i = 1; i < path.corners.Length; i++)
         {
+            path.corners[i].y = 5f;
             lineRenderer.SetPosition(i , path.corners[i]);
         }
     }
