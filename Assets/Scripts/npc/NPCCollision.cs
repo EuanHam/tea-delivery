@@ -32,8 +32,12 @@ public class NPCCollision : MonoBehaviour
 
                 bd.load = null;
 
-                bd.ordersCompleted += 1;
-                
+                if (powerUpManager.isDoubleMoney()) {
+                    bd.specialOrdersCompleted += 1;
+                } else {
+                    bd.ordersCompleted += 1;
+                }
+
                 bd.balance += (powerUpManager.isDoubleMoney() ? 2 : 1) * 100;
                 playCashRegister();
                 StartCoroutine(startVictory());

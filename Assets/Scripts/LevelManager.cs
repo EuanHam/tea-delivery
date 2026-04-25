@@ -82,7 +82,7 @@ public class LevelManager : MonoBehaviour
         ui.endUI.SetActive(true);
         int highScore = GetHighScore(levelName);
 
-        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars, highScore);
+        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.specialOrdersCompleted, player.npcsHit, player.vehicleCollisions, stars, highScore);
     }
 
     private int CalculateStars(int balance)
