@@ -33413,6 +33413,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 685166437280163655, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1207559091}
+    - target: {fileID: 685166437280163655, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRetryButton
+      objectReference: {fileID: 0}
     - target: {fileID: 704265220644745339, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
       propertyPath: m_SizeDelta.x
       value: 179.385
@@ -33528,6 +33536,14 @@ PrefabInstance:
     - target: {fileID: 1196060198998557066, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLevelSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435150531594635649, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1207559091}
+    - target: {fileID: 1435150531594635649, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelSelectButton
       objectReference: {fileID: 0}
     - target: {fileID: 1483723615625528882, guid: 14ffdd8ebdfe3384eb8d5e558613b145, type: 3}
       propertyPath: m_LocalPosition.x
