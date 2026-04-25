@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     {
         "Say Hello to Robbi!\n(Press space)",
         "Help Robbi find the Bubble Tea Shop!",
-        "Use WASD to move around!"
+        "Use WASD to move around and press SPACE to honk!"
     };
     private int instructionIndex;
 
