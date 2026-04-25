@@ -23,10 +23,10 @@ public class LevelSelectionController : MonoBehaviour
     void Start()
     {
         // Load high scores for each level and update UI
-        highScoreText0.text = $"High Score: ${PlayerPrefs.GetInt("Level0Tutorial_HighScore", 0)}";
-        highScoreText1.text = $"High Score: ${PlayerPrefs.GetInt("Level1_HighScore", 0)}";
-        highScoreText2.text = $"High Score: ${PlayerPrefs.GetInt("Level2_HighScore", 0)}";
-        highScoreText3.text = $"High Score: ${PlayerPrefs.GetInt("Level3_HighScore", 0)}";
+        highScoreText0.text = $"High Score: ${PlayerPrefs.GetInt("HighScore_Level0Tutorial", 0)}";
+        highScoreText1.text = $"High Score: ${PlayerPrefs.GetInt("HighScore_Level1", 0)}";
+        highScoreText2.text = $"High Score: ${PlayerPrefs.GetInt("HighScore_Level2", 0)}";
+        highScoreText3.text = $"High Score: ${PlayerPrefs.GetInt("HighScore_Level3", 0)}";
 
         if (backButton != null)
         {
