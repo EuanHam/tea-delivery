@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private WinScreenManager winScreen;
 
     [SerializeField] private PauseScreenManager pauseScreenManager;
+    // [SerializeField] private Camera mainCamera;
 
     private int[] balanceCondition;
     private float[] timeCondition;
@@ -75,18 +76,18 @@ public class LevelManager : MonoBehaviour
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
         } 
-        // else if (ui.instructionActive())
+        // else if (ui.instructionActive() camerastuff)
         // {
         //     Time.timeScale = 0f;
         // } 
-        // else {
-        //     Time.timeScale = 1f;
+        else {
+            Time.timeScale = 1f;
             if (time <= 0 && !levelEnded) {
                 levelEnded = true;
                 StartCoroutine(EndLevelSequence());
             } 
-        // }
-        if (!pauseScreenManager.isPaused) {
+        }
+        if (!pauseScreenManager.isPaused && !ui.instructionActive()) {
             time -= Time.deltaTime;
         }
         float newY = highlight.transform.position.y + Mathf.Cos(Time.time * 2f) * 0.75f;

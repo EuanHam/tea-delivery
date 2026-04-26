@@ -10,6 +10,15 @@ public class ThirdPersonCamera : MonoBehaviour
     void LateUpdate()
     {
         if (target == null) return;
+
+        // if (ui.instructionActive())
+        // {
+        //     Time.timeScale = 0f;
+        // }
+        // else
+        // {
+        //     Time.timeScale = 1f;
+        // }
         
         Vector3 desiredPosition = target.position + target.TransformDirection(offset);
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
