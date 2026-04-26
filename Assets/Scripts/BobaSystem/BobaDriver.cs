@@ -21,6 +21,16 @@ public class BobaDriver : MonoBehaviour
         specialOrdersCompleted = 0;
         npcsHit = 0;
         vehicleCollisions = 0;
+
+        // sanity check
+        if (BobaShop == null)
+        {
+            BobaShop = GameObject.Find("BobaShop");
+            if (BobaShop == null)
+            {
+                Debug.LogWarning("Cannot find boba shop.");
+            }
+        }
     }
 
     // Update is called once per frame
