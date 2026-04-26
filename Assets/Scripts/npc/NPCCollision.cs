@@ -42,7 +42,26 @@ public class NPCCollision : MonoBehaviour
                 playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul && !vc.isStunned()) {
-                bd.balance = bd.balance - 10;
+                string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                int penalty = 10; // default
+
+                switch (sceneName)
+                {
+                    case "Level0Tutorial":
+                        penalty = 10;
+                        break;
+                    case "Level1":
+                        penalty = 10;
+                        break;
+                    case "Level2":
+                        penalty = 20;
+                        break;
+                    case "Level3":
+                        penalty = 30;
+                        break;
+                }
+
+                bd.balance -= penalty;
                 bd.npcsHit += 1;
                 PlayWilhelmScream();
                 EnableRagdoll(c);
