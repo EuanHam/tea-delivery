@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class NPCCollision : MonoBehaviour
@@ -42,7 +43,9 @@ public class NPCCollision : MonoBehaviour
                 playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul && !vc.isStunned()) {
-                bd.balance = bd.balance - 10;
+                // Get penalty based on level
+                int penalty = GetNPCPenalty();
+                bd.balance = bd.balance - penalty;
                 bd.npcsHit += 1;
                 PlayWilhelmScream();
                 EnableRagdoll(c);
@@ -107,6 +110,20 @@ public class NPCCollision : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
+    }
+
+    private int GetNPCPenalty()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        
+        return sceneName switch
+        {
+            "Level0Tutorial" => 10,
+            "Level1" => 10,
+            "Level2" => 20,
+            "Level3" => 30,
+            _ => 10  // Default to 10 for unknown levels
+        };
     }
 
 }
