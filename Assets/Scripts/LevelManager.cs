@@ -8,17 +8,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UIManager ui;
 
     [SerializeField] private WinScreenManager winScreen;
-    // Balance needed to win the level
-    [SerializeField] private int[] balanceCondition = new int[] {500, 1000, 2000};
 
-    //Time player has to complete the level
-    [SerializeField] private float[] timeCondition = new float[] {120f, 120f, 120f};
+    private int[] balanceCondition;
+    private float[] timeCondition;
 
     public float time;
     private string levelName;
     private int winBalance;
     private bool levelEnded = false;
     private GameObject highlight;
+    void Awake()
+    {
+        balanceCondition = new int[] {500, 1000, 2000, 2100}; // Balance needed to win the level
+        timeCondition = new float[] {120f, 100f, 80f, 60f}; //Time player has to complete the level
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
