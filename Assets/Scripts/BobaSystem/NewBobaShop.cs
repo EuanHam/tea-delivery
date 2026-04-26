@@ -25,10 +25,10 @@ public class NewBobaShop : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision c)
+    private void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.tag == "Player") 
-        {
+        {   
             BobaDriver bd = c.gameObject.GetComponent<BobaDriver>();
             
             if (bd != null && bd.load == null && orders.Count != 0)
