@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        levelName = SceneManager.GetActiveScene().name;
         if (player.load == null)
         {
             highlight.transform.position = bobaShop.transform.position + Vector3.up * 3.5f + Vector3.forward * 2.5f;
@@ -68,10 +69,10 @@ public class LevelManager : MonoBehaviour
         }
         
         // check wincon
-        // if (player.balance >= winBalance && !levelEnded) {
-        //     levelEnded = true;
-        //     StartCoroutine(EndLevelSequence());
-        if (ui.instructionActive() && time > 4f)
+        if (levelName == "Level0Tutorial" && player.balance >= winBalance && !levelEnded) {
+            levelEnded = true;
+            StartCoroutine(EndLevelSequence());
+        } else if (ui.instructionActive() && time > 4f)
         {
             Time.timeScale = 0f;
         } else {
