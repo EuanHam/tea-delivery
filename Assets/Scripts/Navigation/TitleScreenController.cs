@@ -6,20 +6,23 @@ public class TitleScreenController : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Button playButton;
-    
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button creditsButton;
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource backgroundMusicSource;
     
     void Start()
     {
-        if (playButton != null)
+        if (playButton != null && exitButton != null && creditsButton != null)
         {
             playButton.onClick.AddListener(PlaySoundAndGoToLevelSelection);
+            exitButton.onClick.AddListener(PlaySoundAndQuitGame);
+            creditsButton.onClick.AddListener(PlaySoundAndShowCredits);
         }
         else
         {
-            Debug.LogError("Play button not configured in TitleScreenController");
+            Debug.LogError("One or more buttons not configured in TitleScreenController");
         }
         
         if (backgroundMusicSource != null)
@@ -33,6 +36,18 @@ public class TitleScreenController : MonoBehaviour
     {
         PlaySound();
         StartCoroutine(GoToLevelSelectionWithDelay(0.5f));
+    }
+
+    void PlaySoundAndQuitGame()
+    {
+        PlaySound();
+        Invoke(nameof(QuitGame), 0.5f);
+    }
+
+    void PlaySoundAndShowCredits()
+    {
+        PlaySound();
+        Invoke(nameof(ShowCredits), 0.5f);
     }
     
     void PlaySound()
@@ -57,4 +72,19 @@ public class TitleScreenController : MonoBehaviour
     {
         SceneManager.LoadScene("LevelSelection");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
+    public void ShowCredits()
+    {
+        SceneManager.LoadScene("CreditsScreen");
+    }
+
 }
