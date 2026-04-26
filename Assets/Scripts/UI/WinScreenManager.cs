@@ -10,6 +10,10 @@ public class WinScreenManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI numOrdersText;
     [SerializeField] private TextMeshProUGUI ordersBalanceText;
+    [SerializeField] private TextMeshProUGUI numSpecialOrdersText;
+    [SerializeField] private TextMeshProUGUI specialOrdersBalanceText;
+    [SerializeField] private TextMeshProUGUI numberOfVehicleCollisionsText;
+    [SerializeField] private TextMeshProUGUI vehicleCollisionsText;
     [SerializeField] private TextMeshProUGUI numNPCsHitText;
     [SerializeField] private TextMeshProUGUI npcsHitBalanceText;
     [SerializeField] private TextMeshProUGUI finalBalanceText;
@@ -43,7 +47,7 @@ public class WinScreenManager : MonoBehaviour
         winScreenPanel.SetActive(false);
     }
 
-    public void Show(int finalBalance, int targetBalance, int numOrders, int numNPCsHit, int starCount, int highScore)
+    public void Show(int finalBalance, int targetBalance, int numOrders, int specialOrdersCompleted, int numNPCsHit, int vehicleCollisions, int starCount, int highScore)
     {
         winScreenPanel.SetActive(true);
         lowResOverlay.SetActive(false);
@@ -58,6 +62,10 @@ public class WinScreenManager : MonoBehaviour
         highScoreText.gameObject.SetActive(false);
         numOrdersText.gameObject.SetActive(false);
         ordersBalanceText.gameObject.SetActive(false);
+        numSpecialOrdersText.gameObject.SetActive(false);
+        specialOrdersBalanceText.gameObject.SetActive(false);
+        numberOfVehicleCollisionsText.gameObject.SetActive(false);
+        vehicleCollisionsText.gameObject.SetActive(false);
         numNPCsHitText.gameObject.SetActive(false);
         npcsHitBalanceText.gameObject.SetActive(false);
         finalBalanceText.gameObject.SetActive(false);
@@ -69,10 +77,11 @@ public class WinScreenManager : MonoBehaviour
             stars[i].sprite = starEmpty;
         }
 
-        StartCoroutine(AnimateSequence(finalBalance, numOrders, numNPCsHit, starCount, highScore));
+        bool isTutorial = SceneManager.GetActiveScene().name == "Level0Tutorial";
+        StartCoroutine(AnimateSequence(finalBalance, numOrders, specialOrdersCompleted, numNPCsHit, vehicleCollisions, starCount, highScore, isTutorial));
     }
 
-    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int numNPCsHit, int starCount, int highScore)
+    private IEnumerator AnimateSequence(int finalBalance, int numOrders, int specialOrdersCompleted, int numNPCsHit, int vehicleCollisions, int starCount, int highScore, bool isTutorial)
     {
         musicSource.PlayOneShot(victorySound);
         yield return new WaitForSecondsRealtime(0.8f);
@@ -86,10 +95,28 @@ public class WinScreenManager : MonoBehaviour
         ordersLabelText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
         highScoreText.text = $"High Score: ${highScore}";
+
         numOrdersText.gameObject.SetActive(true);
         ordersBalanceText.gameObject.SetActive(true);
-        numOrdersText.text = $"{numOrders}x";
-        ordersBalanceText.text = $"${numOrders * 100}";
+        
+        // For tutorial, show 1 order if any were completed
+        if (isTutorial)
+        {
+            int tutorialOrders = numOrders > 0 ? 1 : 0;
+            numOrdersText.text = $"{tutorialOrders}x";
+            ordersBalanceText.text = $"${tutorialOrders * 100}";
+        }
+        else
+        {
+            numOrdersText.text = $"{numOrders}x";
+            ordersBalanceText.text = $"${numOrders * 100}";
+        }
+
+        numSpecialOrdersText.gameObject.SetActive(true);
+        numSpecialOrdersText.text = $"{specialOrdersCompleted}x";
+        specialOrdersBalanceText.gameObject.SetActive(true);
+        specialOrdersBalanceText.text = $"${specialOrdersCompleted * 200}";
+
         audioSource.PlayOneShot(dingSound);
         yield return StartCoroutine(StarAnimation(stars[0]));
         yield return new WaitForSecondsRealtime(delayBetweenStars);
@@ -100,11 +127,21 @@ public class WinScreenManager : MonoBehaviour
             stars[1].sprite = starFilled;
         }
 
-        npcsLabelText.gameObject.SetActive(true);
-        numNPCsHitText.gameObject.SetActive(true);
-        npcsHitBalanceText.gameObject.SetActive(true);
-        numNPCsHitText.text = $"{numNPCsHit}x";
-        npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
+        // For tutorial, hide NPC hit info
+        if (!isTutorial)
+        {
+            npcsLabelText.gameObject.SetActive(true);
+            numNPCsHitText.gameObject.SetActive(true);
+            npcsHitBalanceText.gameObject.SetActive(true);
+            numNPCsHitText.text = $"{numNPCsHit}x";
+            npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
+        }
+
+        numberOfVehicleCollisionsText.gameObject.SetActive(true);
+        numberOfVehicleCollisionsText.text = $"{vehicleCollisions}x";
+        vehicleCollisionsText.gameObject.SetActive(true);
+        vehicleCollisionsText.text = $"-${vehicleCollisions * 100}";
+
         audioSource.PlayOneShot(dingSound);
         yield return StartCoroutine(StarAnimation(stars[1]));
         yield return new WaitForSecondsRealtime(delayBetweenStars);

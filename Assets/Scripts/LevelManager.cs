@@ -8,17 +8,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UIManager ui;
 
     [SerializeField] private WinScreenManager winScreen;
-    // Balance needed to win the level
-    [SerializeField] private int[] balanceCondition = new int[] {500, 1000, 2000};
 
-    //Time player has to complete the level
-    [SerializeField] private float[] timeCondition = new float[] {120f, 120f, 120f};
+    private int[] balanceCondition;
+    private float[] timeCondition;
 
     public float time;
     private string levelName;
     private int winBalance;
     private bool levelEnded = false;
     private GameObject highlight;
+    void Awake()
+    {
+        balanceCondition = new int[] {500, 1000, 2000, 2100}; // Balance needed to win the level
+        timeCondition = new float[] {120f, 100f, 80f, 60f}; //Time player has to complete the level
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +30,7 @@ public class LevelManager : MonoBehaviour
         switch (levelName)
         {
             case "Level0Tutorial":
-                winBalance = balanceCondition[0];
+                winBalance = 1;
                 time = timeCondition[0];
 
                 break;
@@ -56,7 +59,12 @@ public class LevelManager : MonoBehaviour
         {
             highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
         }
-        if (time <= 0 && !levelEnded) {
+        
+        // check wincon
+        if (player.balance >= winBalance && !levelEnded) {
+            levelEnded = true;
+            StartCoroutine(EndLevelSequence());
+        } else if (time <= 0 && !levelEnded) {
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
         } else if (!ui.instructionActive())
@@ -75,6 +83,7 @@ public class LevelManager : MonoBehaviour
 
     private System.Collections.IEnumerator EndLevelSequence()
     {
+        yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(2f);
         ui.endUI.SetActive(false);
         int stars = CalculateStars(player.balance);
@@ -82,7 +91,7 @@ public class LevelManager : MonoBehaviour
         ui.endUI.SetActive(true);
         int highScore = GetHighScore(levelName);
 
-        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.npcsHit, stars, highScore);
+        winScreen.Show(player.balance, winBalance, player.ordersCompleted, player.specialOrdersCompleted, player.npcsHit, player.vehicleCollisions, stars, highScore);
     }
 
     private int CalculateStars(int balance)

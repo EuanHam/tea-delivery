@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     public Material[] mat;
     public int size;
     public GameObject[] poi;
+    public float radius = 250f;
     private GameObject[] npcs;
     private Animator[] anims;
     private NavMeshAgent[] nmas;
@@ -31,7 +32,7 @@ public class NPCController : MonoBehaviour
 
         for (int i = 0; i < size; i++)
         {
-            Vector3 pos = Random.insideUnitSphere * 250f + center.transform.position;
+            Vector3 pos = Random.insideUnitSphere * radius + center.transform.position;
             
             NavMeshHit hit;
 

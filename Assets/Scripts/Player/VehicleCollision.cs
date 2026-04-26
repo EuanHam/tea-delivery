@@ -15,12 +15,12 @@ public class VehicleCollision : MonoBehaviour
         if (c.gameObject.tag == "Vehicle") 
         {
             if (!powerUpManager.isInvunerable() && !robbiController.stunned) {
+                bd.vehicleCollisions += 1;
                 if (bd.balance > 0)
                 {
                     PlayCoinDrop();
                 }
                 bd.balance -= 100;
-                bd.balance = Mathf.Max(0, bd.balance);
             
                 StartCoroutine(stunnedMovement());
             } else if (powerUpManager.isInvunerable())
