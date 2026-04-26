@@ -68,16 +68,21 @@ public class LevelManager : MonoBehaviour
         }
         
         // check wincon
-        if (player.balance >= winBalance && !levelEnded) {
-            levelEnded = true;
-            StartCoroutine(EndLevelSequence());
-        } else if (time <= 0 && !levelEnded) {
-            levelEnded = true;
-            StartCoroutine(EndLevelSequence());
-        } else if (!ui.instructionActive())
+        // if (player.balance >= winBalance && !levelEnded) {
+        //     levelEnded = true;
+        //     StartCoroutine(EndLevelSequence());
+        if (ui.instructionActive() && time > 4f)
         {
-            time -= Time.deltaTime;
+            Time.timeScale = 0f;
+        } else {
+            Time.timeScale = 1f;
+            if (time <= 0 && !levelEnded) {
+                levelEnded = true;
+                StartCoroutine(EndLevelSequence());
+            } 
         }
+
+        time -= Time.deltaTime;
         float newY = highlight.transform.position.y + Mathf.Cos(Time.time * 2f) * 0.75f;
         highlight.transform.position = new Vector3(highlight.transform.position.x, newY, highlight.transform.position.z);
     }
