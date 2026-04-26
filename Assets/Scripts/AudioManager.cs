@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip bell;
 
     private bool played;
+    private bool isMuted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,5 +44,11 @@ public class AudioManager : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(bell, transform.position);
         }
+    }
+
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+        audioSource.mute = isMuted;
     }
 }

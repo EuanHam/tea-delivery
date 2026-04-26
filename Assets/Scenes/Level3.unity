@@ -12796,6 +12796,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1032522913}
+    - target: {fileID: 5996201397577221060, guid: 84383b125cd8843509a17c6b19ff32aa, type: 3}
       propertyPath: honkLoopSource
       value: 
       objectReference: {fileID: 0}

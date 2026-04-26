@@ -6,6 +6,7 @@ public class RobbiController : MonoBehaviour
 {
     [SerializeField] private UIManager ui;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private AudioManager audioManager;
 
     [SerializeField] private Transform frontWheels, midWheels, rearWheel;
 
@@ -47,6 +48,13 @@ public class RobbiController : MonoBehaviour
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
                 isGrounded = false;
             }
+        }
+
+        // mute input
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (audioManager != null)
+                audioManager.ToggleMute();
         }
     }
 
