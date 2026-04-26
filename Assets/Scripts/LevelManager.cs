@@ -45,8 +45,8 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
-        highlight = Instantiate(highlightPrefab, Vector3.zero, Quaternion.Euler(90f, 0f, 0f), transform);
-        highlight.transform.localScale = Vector3.one * 3f;
+        highlight = Instantiate(highlightPrefab , Vector3.zero, Quaternion.Euler(90f, 0f, 0f), transform);
+        highlight.transform.localScale = Vector3.one * 3f ;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
     {
         if (player.load == null)
         {
-            highlight.transform.position = bobaShop.transform.position + Vector3.up * 3.5f;
+            highlight.transform.position = bobaShop.transform.position + Vector3.up * 3.5f + Vector3.forward * 2.5f;
         } else
         {
             highlight.transform.position = player.load.customer.transform.position + Vector3.up * 3f;
