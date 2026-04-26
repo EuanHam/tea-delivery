@@ -21,6 +21,7 @@ public class RobbiController : MonoBehaviour
     [SerializeField] private float drag;
     [SerializeField] private float gravity;
     [SerializeField] private float wheelRotationSpeed = 500f;
+    private bool isGrounded = true;
     public bool stunned;
 
 
@@ -39,6 +40,13 @@ public class RobbiController : MonoBehaviour
         {
             rotate = Input.GetAxis("Horizontal");
             speed = Input.GetAxis("Vertical");
+
+            // jump input
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
+                isGrounded = false;
+            }
         }
     }
 
@@ -50,6 +58,9 @@ public class RobbiController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Check ground first
+        CheckGrounded();
+
         // Forward Speed
         if (speed > 0f && rb.linearVelocity.magnitude < topSpeed)
             rb.AddForce(transform.forward * speed * acceleration, ForceMode.Acceleration);
@@ -77,9 +88,9 @@ public class RobbiController : MonoBehaviour
             localVel.z *= 0.98f;
         }
 
-
-        rb.linearVelocity = transform.TransformDirection(localVel);
-
+        // Preserve Y velocity and apply modified XZ velocity
+        Vector3 worldVel = transform.TransformDirection(localVel);
+        rb.linearVelocity = new Vector3(worldVel.x, rb.linearVelocity.y, worldVel.z);
 
         // Wheel Rotation
         float direction = 0f;
@@ -96,6 +107,20 @@ public class RobbiController : MonoBehaviour
         frontWheels.Rotate(rotationAmount, 0f, 0f);
         midWheels.Rotate(rotationAmount, 0f, 0f);
         rearWheel.Rotate(rotationAmount, 0f, 0f);
+    }
+
+    private void CheckGrounded()
+    {
+        RaycastHit hit;
+        float groundCheckDistance = 1.5f;
+        
+        Vector3 rayStartPos = rb.transform.position;
+        
+        bool centerHit = Physics.Raycast(rayStartPos, Vector3.down, out hit, groundCheckDistance);
+        bool forwardHit = Physics.Raycast(rayStartPos + transform.forward * 0.3f, Vector3.down, out hit, groundCheckDistance);
+        bool backwardHit = Physics.Raycast(rayStartPos - transform.forward * 0.3f, Vector3.down, out hit, groundCheckDistance);
+        
+        isGrounded = centerHit || forwardHit || backwardHit;
     }
 
     public void lockMovement()
