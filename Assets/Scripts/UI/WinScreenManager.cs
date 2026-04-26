@@ -27,7 +27,6 @@ public class WinScreenManager : MonoBehaviour
     [SerializeField] private GameObject lowResOverlay;
 
     [SerializeField] private TextMeshProUGUI ordersLabelText;
-    [SerializeField] private TextMeshProUGUI npcsLabelText;
 
     [SerializeField] private float delayBetweenStars = 0.6f;
     [SerializeField] private float countUpDuration = 1.0f;
@@ -71,7 +70,6 @@ public class WinScreenManager : MonoBehaviour
         finalBalanceText.gameObject.SetActive(false);
         resultText.gameObject.SetActive(false);
         ordersLabelText.gameObject.SetActive(false);
-        npcsLabelText.gameObject.SetActive(false);
 
         for (int i = 0; i < stars.Length; i++) {
             stars[i].sprite = starEmpty;
@@ -127,15 +125,11 @@ public class WinScreenManager : MonoBehaviour
             stars[1].sprite = starFilled;
         }
 
-        // For tutorial, hide NPC hit info
-        if (!isTutorial)
-        {
-            npcsLabelText.gameObject.SetActive(true);
-            numNPCsHitText.gameObject.SetActive(true);
-            npcsHitBalanceText.gameObject.SetActive(true);
-            numNPCsHitText.text = $"{numNPCsHit}x";
-            npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
-        }
+
+        numNPCsHitText.gameObject.SetActive(true);
+        numNPCsHitText.text = $"{numNPCsHit}x";
+        npcsHitBalanceText.gameObject.SetActive(true);
+        npcsHitBalanceText.text = $"-${numNPCsHit * 10}";
 
         numberOfVehicleCollisionsText.gameObject.SetActive(true);
         numberOfVehicleCollisionsText.text = $"{vehicleCollisions}x";

@@ -5088,7 +5088,7 @@ GameObject:
   - component: {fileID: 336961789}
   - component: {fileID: 336961788}
   m_Layer: 5
-  m_Name: NPCs Hit Balance Text
+  m_Name: People Hit Balance Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5691,11 +5691,6 @@ MonoBehaviour:
   highlightPrefab: {fileID: 1592038484381699448, guid: c8bcd3795c6667d47bb795f127ff09f8, type: 3}
   ui: {fileID: 748281878}
   winScreen: {fileID: 1207559091}
-  balanceCondition: f4010000e8030000d0070000
-  timeCondition:
-  - 120
-  - 120
-  - 120
   time: 0
 --- !u!4 &364705408
 Transform:
@@ -22281,22 +22276,21 @@ MonoBehaviour:
   specialOrdersBalanceText: {fileID: 1192325115}
   numberOfVehicleCollisionsText: {fileID: 1530643442}
   vehicleCollisionsText: {fileID: 1123185155}
-  numNPCsHitText: {fileID: 336961788}
+  numNPCsHitText: {fileID: 785259604}
   npcsHitBalanceText: {fileID: 336961788}
-  finalBalanceText: {fileID: 0}
-  resultText: {fileID: 0}
-  star1BalanceText: {fileID: 0}
-  star2BalanceText: {fileID: 0}
-  star3BalanceText: {fileID: 0}
+  finalBalanceText: {fileID: 1791939111}
+  resultText: {fileID: 310657794}
+  star1BalanceText: {fileID: 431587608}
+  star2BalanceText: {fileID: 575120988}
+  star3BalanceText: {fileID: 225968689}
   stars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2055720555}
+  - {fileID: 1150551204}
+  - {fileID: 803727616}
   starFilled: {fileID: 21300000, guid: fab64a5e23b12449da1db8de8196d684, type: 3}
   starEmpty: {fileID: 21300000, guid: 66934ddea53914f4792ecf3a68440bd4, type: 3}
   lowResOverlay: {fileID: 784777288}
-  ordersLabelText: {fileID: 0}
-  npcsLabelText: {fileID: 0}
+  ordersLabelText: {fileID: 859735556}
   delayBetweenStars: 0.6
   countUpDuration: 1
   audioSource: {fileID: 1207559093}
