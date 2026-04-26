@@ -43,9 +43,9 @@ public class NPCCollision : MonoBehaviour
                 playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul && !vc.isStunned()) {
-                // Get penalty based on level
                 int penalty = GetNPCPenalty();
-                bd.balance = bd.balance - penalty;
+
+                bd.balance -= penalty;
                 bd.npcsHit += 1;
                 PlayWilhelmScream();
                 EnableRagdoll(c);

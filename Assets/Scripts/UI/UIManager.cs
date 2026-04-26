@@ -3,13 +3,23 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using TMPro;
+
+public struct Dialogue
+{
+    public string speaker;
+    public string text;
+
+    public static implicit operator string(Dialogue d) => d.text;
+}
+
 public class UIManager : MonoBehaviour
 {
-    private string[] tutorialInstructions = new string[]
+    private Dialogue[] tutorialDialogue = new Dialogue[]
     {
-        "Say Hello to Robbi!\n(Press space)",
-        "Help Robbi find the Bubble Tea Shop!",
-        "Use WASD to move around and press SPACE to honk!"
+        new Dialogue { speaker = "Robbi", text = "Welcome to the city, Robbi!" },
+        new Dialogue { speaker = "Robbi", text = "Say Hello to Robbi!\n(Press space)" },
+        new Dialogue { speaker = "Robbi", text = "Help Robbi find the Bubble Tea Shop!" },
+        new Dialogue { speaker = "Robbi", text = "Use WASD to move around and press SPACE to honk!" }
     };
     private int instructionIndex;
 
@@ -104,10 +114,15 @@ public class UIManager : MonoBehaviour
 
     private void ShowInstruction(int index)
     {
-        if (tutorialInstructions.Length <= instructionIndex) 
+        if (index >= tutorialDialogue.Length)
+        {
             instructionUI.SetActive(false);
-        else 
-            instructionText.text = tutorialInstructions[index];
+            return;
+        }
+        
+        Dialogue line = tutorialDialogue[index];
+        instructionText.text = line.speaker + ": " + line.text;
+        // hintText.text = "(Press space to continue)";
     }
 
     public bool instructionActive()

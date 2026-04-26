@@ -14624,7 +14624,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1207559091}
         m_TargetAssemblyTypeName: WinScreenManager, Assembly-CSharp
         m_MethodName: OnLevelSelectButton
         m_Mode: 1
@@ -15562,7 +15562,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1207559091}
         m_TargetAssemblyTypeName: WinScreenManager, Assembly-CSharp
         m_MethodName: OnRetryButton
         m_Mode: 1
