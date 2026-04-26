@@ -5606,6 +5606,7 @@ MonoBehaviour:
   highlightPrefab: {fileID: 1592038484381699448, guid: c8bcd3795c6667d47bb795f127ff09f8, type: 3}
   ui: {fileID: 748281878}
   winScreen: {fileID: 1207559091}
+  pauseScreenManager: {fileID: 6951123668583324629}
   time: 0
 --- !u!4 &364705408
 Transform:
@@ -43743,6 +43744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4738180b1b079e74f9398c691cb4a733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
   pauseMenuPanel: {fileID: 316103715}
 --- !u!4 &7253131363776281501
 Transform:

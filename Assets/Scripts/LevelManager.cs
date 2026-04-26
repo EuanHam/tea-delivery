@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private WinScreenManager winScreen;
 
+    [SerializeField] private PauseScreenManager pauseScreenManager;
+
     private int[] balanceCondition;
     private float[] timeCondition;
 
@@ -72,18 +74,21 @@ public class LevelManager : MonoBehaviour
         if (levelName == "Level0Tutorial" && player.balance >= winBalance && !levelEnded) {
             levelEnded = true;
             StartCoroutine(EndLevelSequence());
-        } else if (ui.instructionActive() && time > 4f)
-        {
-            Time.timeScale = 0f;
-        } else {
-            Time.timeScale = 1f;
+        } 
+        // else if (ui.instructionActive())
+        // {
+        //     Time.timeScale = 0f;
+        // } 
+        // else {
+        //     Time.timeScale = 1f;
             if (time <= 0 && !levelEnded) {
                 levelEnded = true;
                 StartCoroutine(EndLevelSequence());
             } 
+        // }
+        if (!pauseScreenManager.isPaused) {
+            time -= Time.deltaTime;
         }
-
-        time -= Time.deltaTime;
         float newY = highlight.transform.position.y + Mathf.Cos(Time.time * 2f) * 0.75f;
         highlight.transform.position = new Vector3(highlight.transform.position.x, newY, highlight.transform.position.z);
     }

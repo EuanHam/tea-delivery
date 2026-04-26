@@ -4,7 +4,7 @@ using TMPro;
 public class PauseScreenManager : MonoBehaviour
 {
 
-    private bool isPaused = false;
+    public bool isPaused = false;
     [SerializeField] private GameObject pauseMenuPanel;
 
     // Update is called once per frame
@@ -61,6 +61,7 @@ public class PauseScreenManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
 }
 
 
