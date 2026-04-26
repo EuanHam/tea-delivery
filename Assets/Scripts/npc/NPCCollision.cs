@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class NPCCollision : MonoBehaviour
@@ -42,24 +43,7 @@ public class NPCCollision : MonoBehaviour
                 playCashRegister();
                 StartCoroutine(startVictory());
             } else if (!invul && !vc.isStunned()) {
-                string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                int penalty = 10; // default
-
-                switch (sceneName)
-                {
-                    case "Level0Tutorial":
-                        penalty = 10;
-                        break;
-                    case "Level1":
-                        penalty = 10;
-                        break;
-                    case "Level2":
-                        penalty = 20;
-                        break;
-                    case "Level3":
-                        penalty = 30;
-                        break;
-                }
+                int penalty = GetNPCPenalty();
 
                 bd.balance -= penalty;
                 bd.npcsHit += 1;
@@ -126,6 +110,20 @@ public class NPCCollision : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(cash_register, transform.position);
         }
+    }
+
+    private int GetNPCPenalty()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        
+        return sceneName switch
+        {
+            "Level0Tutorial" => 10,
+            "Level1" => 10,
+            "Level2" => 20,
+            "Level3" => 30,
+            _ => 10  // Default to 10 for unknown levels
+        };
     }
 
 }

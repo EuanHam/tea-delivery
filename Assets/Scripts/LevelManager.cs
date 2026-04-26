@@ -32,11 +32,18 @@ public class LevelManager : MonoBehaviour
             case "Level0Tutorial":
                 winBalance = 1;
                 time = timeCondition[0];
-
                 break;
             case "Level1":
                 winBalance = balanceCondition[1];
                 time = timeCondition[1];
+                break;
+            case "Level2":
+                winBalance = balanceCondition[2];
+                time = timeCondition[2];
+                break;
+            case "Level3":
+                winBalance = balanceCondition[3];
+                time = timeCondition[3];
                 break;
             default:
                 //TODO FIX DEFAULT WIN TIME AND BALANCE COND
